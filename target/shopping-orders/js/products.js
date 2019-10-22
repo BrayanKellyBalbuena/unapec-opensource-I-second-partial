@@ -10,12 +10,12 @@ new Vue({
                 { text: 'Id', value: 'id' },
                 { text: 'Name', value: 'name' },
                 { text: 'Price', value: 'price' },
-                { text: 'Category', value: 'category'},
+                {text: 'Category', value: 'category'},
                 { text: 'Actions', value: 'action', sortable: false }
             ],
             products: [],
-            categories:[],
-            selectedCategory: { },
+            categories: [],
+            selectedCategory: {},
             editedProduct: {
                 id: 0,
                 name: '',
@@ -51,13 +51,13 @@ new Vue({
     },
 
     methods:{
-        getAllMembers: function(vm) {
+        getAllMembers: function (vm) {
             axios.get(this.API_PATH)
                 .then(function(response){
                     vm.products = response.data;
                 });
             axios.get(this.CATEGORIES_ENDPOINT)
-                .then( (resp) => {
+                .then((resp) => {
                     vm.categories = resp.data();
                 })
         },

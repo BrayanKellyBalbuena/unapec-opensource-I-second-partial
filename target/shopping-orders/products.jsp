@@ -86,8 +86,9 @@
                                                               type="number"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="categories" item-text="name" v-model="selectedCategory" item-value="id"
-                                                    label= "Select a category">
+                                                <v-select :items="categories" item-text="name"
+                                                          v-model="selectedCategory" item-value="id"
+                                                          label="Select a category">
                                                 </v-select>
                                             </v-col>
                                         </v-row>

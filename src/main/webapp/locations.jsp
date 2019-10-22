@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Products Categories</title>
+    <title>Products locations</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
@@ -20,7 +20,6 @@
 <body>
 <div id="app">
     <v-app>
-
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="index.jsp">Logo</a>
@@ -39,13 +38,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="categories.jsp">Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="locations.jsp">Locations</a>
+                </li>
             </ul>
         </nav>
 
         <template>
+            <div class="mt-2">
+                <v-alert type="success" v-model="diplaySuccessAlert" dense
+                         border="left" dismissible>
+                    Saved Successfully
+                </v-alert>
+                <v-alert type="error" v-model="diplayErrorAlert" dense
+                         border="left" dismissible>
+                    {{errorMessage}}
+                </v-alert>
+            </div>
             <v-data-table
                     :headers="headers"
-                    :items="categories"
+                    :items="locations"
                     :search="search"
                     sort-by="id"
                     class="elevation-1 mt-4"
@@ -57,7 +69,7 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar flat color="white">
-                        <v-toolbar-title>Products Categories</v-toolbar-title>
+                        <v-toolbar-title>locations</v-toolbar-title>
                         <v-divider
                                 class="mx-4"
                                 inset
@@ -82,27 +94,42 @@
                                 </v-card-title>
 
                                 <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12" sm="6" md="6" hidden>
-                                                <v-text-field v-model="editedCategory.id"
-                                                              label="Category Id"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedCategory.name" label="Name"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedCategory.description"
-                                                              label="Description"></v-text-field>
-                                            </v-col>
-                                        </v-row>
-                                    </v-container>
+                                    <v-form ref="form" v-model="formIsValid" :lazy-validation='true'>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" sm="6" md="6" hidden>
+                                                    <v-text-field v-model="editedLocation.id"
+                                                                  label="Location Id"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field :rules="[rules.required]"
+                                                                  v-model="editedLocation.name"
+                                                                  label="Name"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedLocation.latitude"
+                                                                  :rules="[rules.required, rules.onlyNumbers]"
+                                                                  label="Latitude"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedLocation.longitude"
+                                                                  :rules="[rules.required, rules.onlyNumbers]"
+                                                                  label="Longitude"
+                                                                  hint="At least 1 number"></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-form>
                                 </v-card-text>
 
                                 <v-card-actions>
                                     <div class="flex-grow-1"></div>
                                     <v-btn color="gray" text @click="close">Cancel</v-btn>
-                                    <v-btn color="green" text @click="save">Save</v-btn>
+                                    <v-btn :disabled="!formIsValid"
+                                           color="success"
+                                           class="mr-4"
+                                           color="green" text @click="save">Save
+                                    </v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -112,14 +139,13 @@
                     <v-icon
                             small
                             class="mr-2"
-                            @click="editCategory(item)"
-
+                            @click="editLocation(item)"
                     >
                         edit
                     </v-icon>
                     <v-icon
                             small
-                            @click="deleteCategory(item)"
+                            @click="deleteLocation(item)"
                     >
                         delete
                     </v-icon>
@@ -143,7 +169,7 @@
 <script src="js/libs/axios.js"></script>
 <script src="js/libs/vuetify.js"></script>
 <script src="js/libs/moment-locales.min.js"></script>
-<script src="js/categories.js"></script>
+<script src="js/locations.js"></script>
 
 </body>
 </html>

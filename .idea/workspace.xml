@@ -6,34 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="Done controllers Product, Categories and orders">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/categories.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/libs/moment-locales.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/locations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/locations.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database script/mysql_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database script/mysql_script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopping-orders.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ProductCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/RepositoryDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/RepositoryDatabaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/products.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/WEB-INF/classes/META-INF/shopping-orders.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/products.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/products.jsp" afterDir="false" />
     </list>
@@ -89,6 +70,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\scrip.LAPTOP-ANOQBKDG\Downloads\New folder\shopping-orders\src\main\webapp\js" />
+      <recent name="C:\Users\scrip.LAPTOP-ANOQBKDG\Downloads\New folder\shopping-orders\src\main\webapp" />
       <recent name="C:\Users\scrip.LAPTOP-ANOQBKDG\Downloads\New folder\shopping-orders\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -447,8 +429,23 @@
       <workItem from="1571692330961" duration="285000" />
       <workItem from="1571698999336" duration="14333000" />
       <workItem from="1571746207586" duration="6669000" />
-      <workItem from="1571753008099" duration="7229000" />
+      <workItem from="1571753008099" duration="15210000" />
     </task>
+    <task id="LOCAL-00001" summary="Done controllers Product, Categories and orders">
+      <created>1571760526514</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571760526514</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Done catergories and add moment.js">
+      <created>1571760597314</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571760597314</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,9 +463,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Done controllers Product, Categories and orders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done controllers Product, Categories and orders" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Done catergories and add moment.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done catergories and add moment.js" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

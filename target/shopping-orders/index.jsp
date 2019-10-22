@@ -17,25 +17,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   </head>
   <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Logo</a>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="clients.jsp">Clients</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="orders.jsp">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="products.jsp">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="categories.jsp">Categories</a>
-      </li>
-    </ul>
-  </nav>
   <div id="app">
     <v-app>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Logo</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="clients.jsp">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="orders.jsp">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.jsp">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.jsp">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="locations.jsp">Locations</a>
+          </li>
+        </ul>
+      </nav>
       <template>
         <v-footer dark absolute>
           <v-card class="flex" flat tile>
