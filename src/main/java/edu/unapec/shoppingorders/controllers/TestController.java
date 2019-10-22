@@ -1,19 +1,39 @@
 package edu.unapec.shoppingorders.controllers;
 
+import edu.unapec.shoppingorders.configurations.SpringDIConfiguration;
 import edu.unapec.shoppingorders.models.Todo;
-import lombok.Data;
+import edu.unapec.shoppingorders.services.ProductCategoryService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import javax.json.Json;
-import javax.json.JsonValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Path("/todo")
 public class TestController {
+    private final ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringDIConfiguration.class);
+
+    public TestController() {
+//        HibernateUtil service =  ctx.getBean(HibernateUtil.class);
+//
+//        Session session =  service.getSessionFactory().openSession();
+//
+////      List<ProductCategory>  categories = session.createQuery("from pro", ProductCategory.class).list();
+//
+//        CriteriaBuilder cb = session.getCriteriaBuilder();
+//        CriteriaQuery<ProductCategory> cr = cb.createQuery(ProductCategory.class);
+//        Root<ProductCategory> root = cr.from(ProductCategory.class);
+//        cr.select(root);
+//
+//        Query<ProductCategory> query = session.createQuery(cr);
+//        List<ProductCategory> results = query.getResultList();
+
+        ProductCategoryService repo = ctx.getBean(ProductCategoryService.class);
+        repo.getAll();
+    }
 
     // This method is called if XML is requested
     @GET

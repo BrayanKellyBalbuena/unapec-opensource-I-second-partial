@@ -10,9 +10,12 @@ new Vue({
                 { text: 'Id', value: 'id' },
                 { text: 'Name', value: 'name' },
                 { text: 'Price', value: 'price' },
+                { text: 'Category', value: 'category'},
                 { text: 'Actions', value: 'action', sortable: false }
             ],
             products: [],
+            categories:[],
+            selectedCategory: { },
             editedProduct: {
                 id: 0,
                 name: '',
@@ -24,6 +27,8 @@ new Vue({
                 price: 0.0,
             },
             editedIndex: -1,
+            API_URL: "./api/",
+            CATEGORIES_ENDPOINT: this.API_URL + "categories/",
             API_PATH: "./api/products"
         }
     },
@@ -46,11 +51,15 @@ new Vue({
     },
 
     methods:{
-        getAllMembers: function(vm){
+        getAllMembers: function(vm) {
             axios.get(this.API_PATH)
                 .then(function(response){
                     vm.products = response.data;
                 });
+            axios.get(this.CATEGORIES_ENDPOINT)
+                .then( (resp) => {
+                    vm.categories = resp.data();
+                })
         },
 
         editProduct: function(products) {

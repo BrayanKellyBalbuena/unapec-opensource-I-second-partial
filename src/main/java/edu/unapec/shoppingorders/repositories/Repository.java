@@ -1,9 +1,10 @@
 package edu.unapec.shoppingorders.repositories;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public interface Repository<T, ID> {
+public interface Repository<T, ID extends Serializable> {
     ID add(T entity) throws IOException;
     void update(T entity) throws IOException;
     void delete(ID id) throws IOException;

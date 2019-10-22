@@ -4,15 +4,14 @@ import edu.unapec.shoppingorders.models.BaseModel;
 import edu.unapec.shoppingorders.repositories.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 
-import java.io.IOException;
+import javax.persistence.criteria.CriteriaQuery;
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RepositoryDatabaseImpl<T extends BaseModel, ID> implements Repository<T, ID> {
+public class RepositoryDatabaseImpl<T extends BaseModel, ID extends Serializable> implements Repository<T, ID> {
 
     private Class<T> genericType;
     private Logger LOG = Logger.getLogger(genericType.getName());
@@ -65,7 +64,7 @@ public class RepositoryDatabaseImpl<T extends BaseModel, ID> implements Reposito
     @Override
     public T findById(ID id) {
         Session session = sessionFactory.openSession();
-        T medico = session.get( genericType, (long) id);
+        T medico = session.get(genericType, (Long) id);
         session.close();
         LOG.log(Level.INFO, "Encontrado");
         return medico;

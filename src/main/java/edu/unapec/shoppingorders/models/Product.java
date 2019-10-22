@@ -1,39 +1,26 @@
 package edu.unapec.shoppingorders.models;
 
-public class Product {
-   private int id;
-   private String name;
-   private double price;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-   public Product() {}
+import javax.persistence.*;
 
-    public Product(int id, String name, double price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
+@Data
+@EqualsAndHashCode(callSuper = true)
+@Entity()
+@Table(name = "products")
+public class Product extends BaseModel<Long> {
+    @Column(precision = 128, nullable = false)
+    private String name;
 
-    public int getId() {
-        return this.id;
-    }
+    @Column(nullable = false)
+    private double price;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "category_id", nullable = false)
+    private Long categoryId;
 
-    public String getName() {
-        return this.name;
-    }
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    private ProductCategory productCategory;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }
