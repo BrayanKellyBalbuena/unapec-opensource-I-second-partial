@@ -38,6 +38,16 @@
 <div id="app">
     <v-app>
         <template>
+            <div class="mt-2">
+                <v-alert type="success" v-model="displaySuccessAlert" dense
+                         border="left" dismissible>
+                    Saved Successfully
+                </v-alert>
+                <v-alert type="error" v-model="displayErrorAlert" dense
+                         border="left" dismissible>
+                    {{errorMessage}}
+                </v-alert>
+            </div>
             <v-data-table
                     :headers="headers"
                     :items="products"
@@ -76,17 +86,23 @@
                                         <v-row>
                                             <v-col cols="12" sm="6" md="6" hidden>
                                                 <v-text-field v-model="editedProduct.id"
+                                                              :rules="[rules.required]"
                                                               label="Product Id"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedProduct.name" label="Name"></v-text-field>
+                                                <v-text-field v-model="editedProduct.name"
+                                                              :rules="[rules.required]"
+                                                              label="Name"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedProduct.price" label="Price"
+                                                <v-text-field v-model="editedProduct.price"
+                                                              :rules="[rules.required, rules.validatePrice]"
+                                                              label="Price"
                                                               type="number"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="6">
                                                 <v-select :items="categories" item-text="name"
+                                                          :rules="[rules.required]"
                                                           v-model="selectedCategory" item-value="id"
                                                           label="Select a category">
                                                 </v-select>
@@ -108,15 +124,12 @@
                     <v-icon
                             small
                             class="mr-2"
-                            @click="editProduct(item)"
-
-                    >
+                            @click="editProduct(item)">
                         edit
                     </v-icon>
                     <v-icon
                             small
-                            @click="deleteProduct(item)"
-                    >
+                            @click="deleteProduct(item)">
                         delete
                     </v-icon>
                 </template>
@@ -137,6 +150,7 @@
 
 <script src="js/libs/axios.js"></script>
 <script src="js/libs/vuetify.js"></script>
+<script src="js/libs/moment-locales.min.js"></script>
 <script src="js/products.js"></script>
 </body>
 </html>

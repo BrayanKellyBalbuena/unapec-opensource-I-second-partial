@@ -1,8 +1,13 @@
 package edu.unapec.shoppingorders.models;
 
+import lombok.Data;
+
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Calendar;
 import java.util.Date;
 
+@Data
+@XmlRootElement
 public class ShoppingOrder {
     private int id;
     private int clientId;

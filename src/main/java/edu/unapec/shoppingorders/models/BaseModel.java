@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 
 @MappedSuperclass
 @Data
+@XmlRootElement
 public abstract class BaseModel<ID> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

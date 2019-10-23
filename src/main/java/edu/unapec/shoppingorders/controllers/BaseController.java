@@ -57,7 +57,7 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
             TDto dto = modelMapper.map(service.findById(id), dtoClass);
             return Response.ok(dto).build();
         } catch (Exception ex) {
-            return null;
+            return Response.serverError().entity(ex).build();
         }
     }
 
@@ -69,7 +69,7 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
             service.save(modelMapper.map(dto, modelClass));
             return Response.status(Response.Status.CREATED).entity(dto).build();
         } catch (Exception ex) {
-            return Response.serverError().build();
+            return Response.serverError().entity(ex).build();
         }
     }
 
@@ -86,7 +86,7 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
             }
             return Response.noContent().build();
         } catch (Exception ex) {
-            return Response.serverError().build();
+            return Response.serverError().entity(ex).build();
         }
     }
 
@@ -99,7 +99,7 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
             service.delete(id);
             return Response.status(Response.Status.ACCEPTED).entity("Delete successfully !!").build();
         } catch (Exception ex) {
-            return Response.serverError().build();
+            return Response.serverError().entity(ex).build();
         }
     }
 }

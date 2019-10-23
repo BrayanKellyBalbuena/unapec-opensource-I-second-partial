@@ -40,8 +40,8 @@ new Vue({
                 onlyNumbers: value => /^[-0-9.,]+$/.test(value) || "Only numbers",
             },
             formIsValid: false,
-            diplaySuccessAlert: false,
-            diplayErrorAlert: false,
+            displaySuccessAlert: false,
+            displayErrorAlert: false,
             errorMessage: '',
         }
     },
@@ -82,8 +82,10 @@ new Vue({
             if (confirm('Are you sure want to delete')) {
                 axios.delete(this.API_PATH + id).then((response) => {
                     this.getAllMembers(this)
+                    this.diplaySuccessAlert = true;
                 }).catch((error) => {
-                    this.errorMessage = error
+                    this.diplayErrorAlert = true;
+                    this.errorMessage = error;
                 })
             }
         },
@@ -97,7 +99,7 @@ new Vue({
         },
 
         save() {
-            
+
             if (this.editedIndex > -1) {
                 axios.put(this.API_PATH + this.editedLocation.id, {
                         id: this.editedLocation.id,

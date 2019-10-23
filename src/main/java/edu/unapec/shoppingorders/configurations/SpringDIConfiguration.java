@@ -20,6 +20,7 @@ import edu.unapec.shoppingorders.services.impl.ProductCategoryServiceImpl;
 import edu.unapec.shoppingorders.services.impl.ProductServiceImpl;
 import edu.unapec.shoppingorders.utils.HibernateUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -73,12 +74,17 @@ public class SpringDIConfiguration {
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(PRIVATE);
 
+        mapper.getConfiguration().setAmbiguityIgnored(true);
+
         mapper.createTypeMap(ProductCategory.class, ProductCategoryDto.class);
         mapper.createTypeMap(ProductCategoryDto.class, ProductCategoryDto.class);
         mapper.createTypeMap(Location.class, LocationDto.class);
         mapper.createTypeMap(LocationDto.class, Location.class);
-        mapper.createTypeMap(ProductDto.class, Product.class);
-        mapper.createTypeMap(Product.class, ProductDto.class);
-        return new ModelMapper();
+//        mapper.createTypeMap(ProductDto.class, Product.class);
+
+
+        mapper.typeMap(Product.class, ProductDto.class).addMapping(src -> src.getProductCategory().getName(), ProductDto::setCategory);
+
+        return mapper;
     }
 }

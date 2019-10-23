@@ -46,11 +46,11 @@
 
         <template>
             <div class="mt-2">
-                <v-alert type="success" v-model="diplaySuccessAlert" dense
+                <v-alert type="success" v-model="displaySuccessAlert" dense
                          border="left" dismissible>
                     Saved Successfully
                 </v-alert>
-                <v-alert type="error" v-model="diplayErrorAlert" dense
+                <v-alert type="error" v-model="displayErrorAlert" dense
                          border="left" dismissible>
                     {{errorMessage}}
                 </v-alert>

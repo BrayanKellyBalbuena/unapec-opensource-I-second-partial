@@ -1,6 +1,7 @@
 package edu.unapec.shoppingorders.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @XmlRootElement
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Entity()
 @Table(name = "products_category")
 public class ProductCategory extends  BaseModel<Long> {

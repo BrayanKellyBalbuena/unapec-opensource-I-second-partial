@@ -7,16 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/locations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/locations.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/WEB-INF/classes/META-INF/shopping-orders.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/configurations/SpringDIConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/configurations/SpringDIConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/dtos/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/dtos/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/BaseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ProductCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ShoppingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ShoppingOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/locations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/locations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/locations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/products.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/products.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +38,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -62,7 +71,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
@@ -91,7 +100,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 9.0.22">
+  <component name="RunManager" selected="JBoss Server.JBoss 18.0.0.Final">
     <configuration name="GlassFish 5.0.0" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 5.0.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/shopping-orders/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -429,7 +438,9 @@
       <workItem from="1571692330961" duration="285000" />
       <workItem from="1571698999336" duration="14333000" />
       <workItem from="1571746207586" duration="6669000" />
-      <workItem from="1571753008099" duration="15210000" />
+      <workItem from="1571753008099" duration="20150000" />
+      <workItem from="1571780426253" duration="2216000" />
+      <workItem from="1571791803677" duration="7642000" />
     </task>
     <task id="LOCAL-00001" summary="Done controllers Product, Categories and orders">
       <created>1571760526514</created>
@@ -445,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571760597314</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Done locations">
+      <created>1571773060552</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571773060552</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -456,7 +474,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -467,7 +487,27 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Done controllers Product, Categories and orders" />
     <MESSAGE value="Done catergories and add moment.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done catergories and add moment.js" />
+    <MESSAGE value="Done locations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done locations" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/BaseController.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/BaseController.java</url>
+          <line>42</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

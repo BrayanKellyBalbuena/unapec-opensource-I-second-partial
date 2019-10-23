@@ -13,6 +13,10 @@ new Vue({
                 {text: 'Category', value: 'category'},
                 { text: 'Actions', value: 'action', sortable: false }
             ],
+            rules: {
+                required: value => !!value || 'Required.',
+                validatePrice: value => /^[0-9]+$/.test(value) || 'Invalid number'
+            },
             products: [],
             categories: [],
             selectedCategory: {},
@@ -20,16 +24,23 @@ new Vue({
                 id: 0,
                 name: '',
                 price: 0.0,
+                createdDate: '',
+                state: true
             },
             defaultProduct: {
                 id: 0,
                 name: '',
                 price: 0.0,
+                createdDate: '',
+                state: true
             },
             editedIndex: -1,
-            API_URL: "./api/",
-            CATEGORIES_ENDPOINT: this.API_URL + "categories/",
-            API_PATH: "./api/products"
+            API_URL: "./api/products/",
+            CATEGORIES_ENDPOINT: "./api/products-category/",
+            formIsValid: false,
+            displaySuccessAlert: false,
+            displayErrorAlert: false,
+            errorMessage: '',
         }
     },
 
@@ -52,33 +63,33 @@ new Vue({
 
     methods:{
         getAllMembers: function (vm) {
-            axios.get(this.API_PATH)
+            axios.get(this.API_URL)
                 .then(function(response){
                     vm.products = response.data;
                 });
             axios.get(this.CATEGORIES_ENDPOINT)
                 .then((resp) => {
-                    vm.categories = resp.data();
+                    vm.categories = resp.data;
                 })
         },
 
-        editProduct: function(products) {
-            this.editedIndex = this.products.indexOf(products);
-            this.editedProduct = Object.assign({}, products);
+        editProduct: function (product) {
+            this.editedIndex = this.products.indexOf(product);
+            this.editedProduct = Object.assign({}, product);
+            this.selectedCategory = product.categoryId;
             this.dialog = true;
         },
 
         deleteProduct: function(product) {
             const id = this.products.find(c => c.id === product.id).id;
             if(confirm('Are you sure want to delete') ){
-                axios.delete(this.API_PATH , {
-                    params: {
-                        id: id
-                    }
+                axios.delete(this.API_URL + product.id, {
                 } ).then( (response) => {
-                    this.getAllMembers(this)
+                    this.diplaySuccessAlert = true;
+                    this.getAllMembers(this);
                 }).catch( (error) => {
-                    alert(error)
+                    this.diplayErrorAlert = true;
+                    this.errorMessage = error;
                 })
             }
         },
@@ -93,24 +104,36 @@ new Vue({
 
         save () {
             if (this.editedIndex > -1) {
-                axios.put(this.API_PATH,{
+                axios.put(this.API_URL + this.editedProduct.id, {
                     id: this.editedProduct.id,
+                        categoryId: this.selectedCategory,
                     name: this.editedProduct.name,
-                    price: this.editedProduct.price}
+                        price: this.editedProduct.price,
+                        createdDate: this.editedProduct.createdDate,
+                        state: true
+                    },
                 ).then( (response) => {
-                    this.getAllMembers(this)
+                    this.getAllMembers(this);
+                    this.diplaySuccessAlert = true;
                 }).catch((error) => {
-                    console.error(error)
+                    this.diplayErrorAlert = true;
+                    this.errorMessage = error;
                 });
 
             } else {
-                axios.post(this.API_PATH,{
+                axios.post(this.API_URL, {
                     name: this.editedProduct.name,
-                    price: this.editedProduct.price}
+                        categoryId: this.selectedCategory,
+                        price: this.editedProduct.price,
+                        createdDate: moment().format("D-MM-YYYY H:m:s"),
+                        state: true
+                    },
                 ).then( (response) => {
                     this.getAllMembers(this)
+                    this.diplaySuccessAlert = true;
                 }).catch((error) => {
-                    console.error(error)
+                    this.diplayErrorAlert = true;
+                    this.errorMessage = error;
                 })
 
             }
