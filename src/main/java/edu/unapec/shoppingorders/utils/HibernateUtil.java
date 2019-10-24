@@ -3,6 +3,7 @@ package edu.unapec.shoppingorders.utils;
 import edu.unapec.shoppingorders.models.Location;
 import edu.unapec.shoppingorders.models.Product;
 import edu.unapec.shoppingorders.models.ProductCategory;
+import edu.unapec.shoppingorders.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -46,5 +47,6 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(ProductCategory.class);
         configuration.addAnnotatedClass(Location.class);
         configuration.addAnnotatedClass(Product.class);
+        configuration.addAnnotatedClass(User.class);
     }
 }

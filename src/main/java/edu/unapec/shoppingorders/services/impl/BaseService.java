@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class BaseService<TModel extends BaseModel, ID extends Serializable> implements Service<TModel, ID> {
-    private Repository<TModel, ID> repository;
+    protected Repository<TModel, ID> repository;
 
     public BaseService(Repository<TModel, ID> repository) {
         this.repository = repository;

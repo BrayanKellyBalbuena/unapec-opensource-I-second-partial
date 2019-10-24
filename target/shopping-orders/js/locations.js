@@ -124,7 +124,7 @@ new Vue({
                         name: this.editedLocation.name,
                         lastName: this.editedLocation.lastName,
                         description: this.editedLocation.description,
-                    createdDate: moment().format("D-MM-YYYY H:m:s")
+                        createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)

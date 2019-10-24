@@ -11,7 +11,7 @@ CREATE TABLE users(
   id BIGINT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(64) NOT NULL,
   last_name VARCHAR(128) NOT NULL,
-  identification_card CHAR(11) NOT NULL,
+  identification_card CHAR(11) NOT NULL UNIQUE,
   email VARCHAR(64) NOT NULL UNIQUE,
   `password` VARCHAR(64) NOT NULL,
   created_date DATETIME NOT NULL,
@@ -86,3 +86,8 @@ CREATE TABLE orders(
 SELECT * FROM  locations;
 SELECT * FROM  products;
 SELECT * FROM  products_category;
+select * from users;
+
+update locations
+set state = 1
+where id in (1,2);

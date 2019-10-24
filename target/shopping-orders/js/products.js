@@ -73,17 +73,17 @@ new Vue({
                 })
         },
 
-        editProduct: function(product) {
+        editProduct: function (product) {
             this.editedIndex = this.products.indexOf(product);
             this.editedProduct = Object.assign({}, product);
-            this.selectedCategory= product.categoryId;
+            this.selectedCategory = product.categoryId;
             this.dialog = true;
         },
 
         deleteProduct: function(product) {
             const id = this.products.find(c => c.id === product.id).id;
             if(confirm('Are you sure want to delete') ){
-                axios.delete(this.API_URL + product.id , {
+                axios.delete(this.API_URL + product.id, {
                 } ).then( (response) => {
                     this.diplaySuccessAlert = true;
                     this.getAllMembers(this);
@@ -104,13 +104,14 @@ new Vue({
 
         save () {
             if (this.editedIndex > -1) {
-                axios.put(this.API_URL + this.editedProduct.id,{
+                axios.put(this.API_URL + this.editedProduct.id, {
                     id: this.editedProduct.id,
-                    categoryId: this.selectedCategory,
+                        categoryId: this.selectedCategory,
                     name: this.editedProduct.name,
-                    price: this.editedProduct.price,
-                    createdDate: this.editedProduct.createdDate,
-                    state: true},
+                        price: this.editedProduct.price,
+                        createdDate: this.editedProduct.createdDate,
+                        state: true
+                    },
                 ).then( (response) => {
                     this.getAllMembers(this);
                     this.diplaySuccessAlert = true;
@@ -120,12 +121,13 @@ new Vue({
                 });
 
             } else {
-                axios.post(this.API_URL,{
+                axios.post(this.API_URL, {
                     name: this.editedProduct.name,
-                    categoryId: this.selectedCategory,
-                    price: this.editedProduct.price,
-                    createdDate: moment().format("D-MM-YYYY H:m:s"),
-                    state: true},
+                        categoryId: this.selectedCategory,
+                        price: this.editedProduct.price,
+                        createdDate: moment().format("D-MM-YYYY H:m:s"),
+                        state: true
+                    },
                 ).then( (response) => {
                     this.getAllMembers(this)
                     this.diplaySuccessAlert = true;

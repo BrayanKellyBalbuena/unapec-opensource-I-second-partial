@@ -28,7 +28,7 @@
 <body>
 <div id="app">
     <v-app>
-        <div class="login">
+        <div class="login" >
             <v-card v-if="displayLogin">
                 <v-card-title>
                     <span class="headline">Login</span>

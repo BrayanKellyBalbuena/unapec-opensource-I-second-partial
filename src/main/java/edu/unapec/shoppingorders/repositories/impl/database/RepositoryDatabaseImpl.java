@@ -3,7 +3,6 @@ package edu.unapec.shoppingorders.repositories.impl.database;
 import edu.unapec.shoppingorders.models.BaseModel;
 import edu.unapec.shoppingorders.repositories.Repository;
 import edu.unapec.shoppingorders.utils.HibernateUtil;
-import lombok.Data;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,8 +10,6 @@ import org.hibernate.query.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,8 +53,6 @@ public class RepositoryDatabaseImpl<T extends BaseModel, ID extends Serializable
             session.close();
             LOG.log(Level.INFO, "Eliminado");
         }
-        ;
-
     }
 
     @Override
@@ -75,10 +70,10 @@ public class RepositoryDatabaseImpl<T extends BaseModel, ID extends Serializable
     @Override
     public T findById(ID id) {
         Session session = sessionFactory.openSession();
-        T medico = session.get(genericType, (Serializable) id);
+        T model = session.get(genericType, (Serializable) id);
         session.close();
         LOG.log(Level.INFO, "Encontrado");
-        return medico;
+        return model;
     }
 
     @Override

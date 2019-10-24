@@ -11,7 +11,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,10 +21,9 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
     protected ModelMapper modelMapper;
     protected Class<TModel> modelClass;
     protected Class<TDto> dtoClass;
-    protected Class<TService> serviceClass;
 
     public BaseController() {
-
+        modelMapper = ctx.getBean(ModelMapper.class);
     }
 
     public BaseController(Class<TModel> modelClass, Class<TDto> dtoClass, Class<TService> serviceClass) {
@@ -40,7 +38,8 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response getAll() {
         try {
-            List<TDto> dtos = (List<TDto>) service.getAll().stream().map(s -> modelMapper.map(s, dtoClass))
+            List<TDto> dtos = (List<TDto>) service.getAll()
+                    .stream().map(s -> modelMapper.map(s, dtoClass))
                     .collect(Collectors.toList());
 
             return Response.ok(dtos).build();
@@ -54,8 +53,10 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response get(@PathParam("id") Long id) {
         try {
-            TDto dto = modelMapper.map(service.findById(id), dtoClass);
-            return Response.ok(dto).build();
+            TModel model = (TModel) service.findById(id);
+            if (model == null) return Response.status(Response.Status.NOT_FOUND).build();
+
+            return Response.ok(modelMapper.map(model, dtoClass)).build();
         } catch (Exception ex) {
             return Response.serverError().entity(ex).build();
         }

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Products</title>
+    <title>Products locations</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
@@ -18,25 +18,32 @@
     <script src="js/libs/vue.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="index.jsp">Logo</a>
-
-    <!-- Links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="clients.jsp">Clients</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="orders.jsp">Orders</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="products.jsp">Products</a>
-        </li>
-    </ul>
-</nav>
 <div id="app">
     <v-app>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="index.jsp">Logo</a>
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="clients.jsp">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.jsp">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.jsp">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.jsp">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="locations.jsp">Locations</a>
+                </li>
+            </ul>
+        </nav>
+
         <template>
             <div class="mt-2">
                 <v-alert type="success" v-model="displaySuccessAlert" dense
@@ -50,14 +57,19 @@
             </div>
             <v-data-table
                     :headers="headers"
-                    :items="products"
+                    :items="locations"
                     :search="search"
                     sort-by="id"
                     class="elevation-1 mt-4"
             >
+                <template v-slot:item.state="{ item }">
+                    <v-icon>
+                        {{ item.state ? "mdi-checkbox-marked" : "mdi-checkbox-blank-outline" }}
+                    </v-icon>
+                </template>
                 <template v-slot:top>
                     <v-toolbar flat color="white">
-                        <v-toolbar-title>Products</v-toolbar-title>
+                        <v-toolbar-title>locations</v-toolbar-title>
                         <v-divider
                                 class="mx-4"
                                 inset
@@ -82,39 +94,42 @@
                                 </v-card-title>
 
                                 <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12" sm="6" md="6" hidden>
-                                                <v-text-field v-model="editedProduct.id"
-                                                              :rules="[rules.required]"
-                                                              label="Product Id"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedProduct.name"
-                                                              :rules="[rules.required]"
-                                                              label="Name"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedProduct.price"
-                                                              :rules="[rules.required, rules.validatePrice]"
-                                                              label="Price"
-                                                              type="number"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="categories" item-text="name"
-                                                          :rules="[rules.required]"
-                                                          v-model="selectedCategory" item-value="id"
-                                                          label="Select a category">
-                                                </v-select>
-                                            </v-col>
-                                        </v-row>
-                                    </v-container>
+                                    <v-form ref="form" v-model="formIsValid" :lazy-validation='true'>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" sm="6" md="6" hidden>
+                                                    <v-text-field v-model="editedLocation.id"
+                                                                  label="Location Id"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field :rules="[rules.required]"
+                                                                  v-model="editedLocation.name"
+                                                                  label="Name"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedLocation.latitude"
+                                                                  :rules="[rules.required, rules.onlyNumbers]"
+                                                                  label="Latitude"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedLocation.longitude"
+                                                                  :rules="[rules.required, rules.onlyNumbers]"
+                                                                  label="Longitude"
+                                                                  hint="At least 1 number"></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-form>
                                 </v-card-text>
 
                                 <v-card-actions>
                                     <div class="flex-grow-1"></div>
                                     <v-btn color="gray" text @click="close">Cancel</v-btn>
-                                    <v-btn color="green" text @click="save">Save</v-btn>
+                                    <v-btn :disabled="!formIsValid"
+                                           color="success"
+                                           class="mr-4"
+                                           color="green" text @click="save">Save
+                                    </v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -124,12 +139,14 @@
                     <v-icon
                             small
                             class="mr-2"
-                            @click="editProduct(item)">
+                            @click="editLocation(item)"
+                    >
                         edit
                     </v-icon>
                     <v-icon
                             small
-                            @click="deleteProduct(item)">
+                            @click="deleteLocation(item)"
+                    >
                         delete
                     </v-icon>
                 </template>
@@ -140,7 +157,8 @@
             <v-footer dark absolute>
                 <v-card class="flex" flat tile>
                     <v-card-actions class="grey darken-3 justify-center">
-                        {{ new Date().getFullYear() }} — <strong>Brayan Kelly 20181876</strong>
+                        <strong>Brayan Kelly 20181876</strong> -
+                        <strong>Date {{ new Date() }} </strong>
                     </v-card-actions>
                 </v-card>
             </v-footer>
@@ -151,6 +169,7 @@
 <script src="js/libs/axios.js"></script>
 <script src="js/libs/vuetify.js"></script>
 <script src="js/libs/moment-locales.min.js"></script>
-<script src="js/products.js"></script>
+<script src="js/locations.js"></script>
+
 </body>
 </html>

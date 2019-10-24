@@ -106,7 +106,7 @@ new Vue({
                         name: this.editedCategory.name,
                         lastName: this.editedCategory.lastName,
                         description: this.editedCategory.description,
-                        createdDate: moment(new Date().toDateString()).format("D-MM-YYYY H:m:s")
+                        createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
