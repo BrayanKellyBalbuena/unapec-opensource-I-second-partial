@@ -45,7 +45,14 @@ new Vue({
             editedIndex: -1,
             API_ORDERS: "./api/shopping-orders",
             API_PRODUCTS: "./api/products",
-            API_CLIENTS: "./api/clients"
+            API_CLIENTS: "./api/clients",
+            currentUser: {firstName: '', lastName: ''}
+        }
+    },
+
+    beforeCreate() {
+        if (authenticationService.getCurrentUser() === null) {
+            window.location.href = './login.jsp'
         }
     },
 
@@ -62,6 +69,7 @@ new Vue({
     },
 
     mounted: function(){
+        this.currentUser = JSON.parse(authenticationService.getCurrentUser());
         let $vm = this;
         this.getAllMembers($vm)
 
@@ -86,6 +94,10 @@ new Vue({
             }).catch((error) => {
                 console.error(error);
             });
+        },
+
+        logout() {
+            authenticationService.logout();
         },
 
         editOrder: function(order) {

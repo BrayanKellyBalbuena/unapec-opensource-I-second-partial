@@ -41,6 +41,13 @@ new Vue({
             displaySuccessAlert: false,
             displayErrorAlert: false,
             errorMessage: '',
+            currentUser: {firstName: '', lastName: ''}
+        }
+    },
+
+    beforeCreate() {
+        if (authenticationService.getCurrentUser() === null) {
+            window.location.href = './login.jsp'
         }
     },
 
@@ -57,6 +64,7 @@ new Vue({
     },
 
     mounted: function(){
+        this.currentUser = JSON.parse(authenticationService.getCurrentUser());
         let $vm = this;
         this.getAllMembers($vm);
     },
@@ -73,6 +81,9 @@ new Vue({
                 })
         },
 
+        logout() {
+            authenticationService.logout();
+        },
         editProduct: function (product) {
             this.editedIndex = this.products.indexOf(product);
             this.editedProduct = Object.assign({}, product);

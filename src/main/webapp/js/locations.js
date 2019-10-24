@@ -43,6 +43,7 @@ new Vue({
             displaySuccessAlert: false,
             displayErrorAlert: false,
             errorMessage: '',
+            currentUser: {firstName: '', lastName: ''},
         }
     },
 
@@ -58,7 +59,14 @@ new Vue({
         }
     },
 
+    beforeCreate() {
+        if (authenticationService.getCurrentUser() === null) {
+            window.location.href = './login.jsp'
+        }
+    },
+
     mounted: function () {
+        this.currentUser = JSON.parse(authenticationService.getCurrentUser());
         let $vm = this;
         this.getAllMembers($vm);
     },
@@ -69,6 +77,10 @@ new Vue({
                 .then(function (response) {
                     vm.locations = response.data;
                 });
+        },
+
+        logout() {
+            authenticationService.logout();
         },
 
         editLocation: function (location) {

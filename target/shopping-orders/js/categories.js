@@ -31,7 +31,8 @@ new Vue({
                 state: true
             },
             editedIndex: -1,
-            API_PATH: "./api/products-category/"
+            API_PATH: "./api/products-category/",
+            currentUser: {firstName: '', lastName: ''}
         }
     },
 
@@ -47,7 +48,15 @@ new Vue({
         }
     },
 
-    mounted: function () {
+    beforeCreate() {
+        if (authenticationService.getCurrentUser() === null) {
+            window.location.href = './login.jsp'
+        }
+    },
+
+
+    mounted() {
+        this.currentUser = JSON.parse(authenticationService.getCurrentUser());
         let $vm = this;
         this.getAllMembers($vm);
     },
@@ -58,6 +67,10 @@ new Vue({
                 .then(function (response) {
                     vm.categories = response.data;
                 });
+        },
+
+        logout() {
+            authenticationService.logout();
         },
 
         editCategory: function (category) {
@@ -106,7 +119,7 @@ new Vue({
                         name: this.editedCategory.name,
                         lastName: this.editedCategory.lastName,
                         description: this.editedCategory.description,
-                        createdDate: moment().format("D-MM-YYYY H:m:s")
+                    createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)

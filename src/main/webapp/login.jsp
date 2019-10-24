@@ -21,15 +21,22 @@
     .login {
         margin: 10% 30%;
     }
-
-    body
 </style>
 </head>
 <body>
 <div id="app">
     <v-app>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="#">Shopping Orders</a>
+            <ul class="navbar-nav">
+            </ul>
+        </nav>
         <div class="login">
             <v-card v-if="displayLogin">
+                <v-progress-linear v-show="showLoading"
+                                   indeterminate
+                                   color="teal"
+                ></v-progress-linear>
                 <v-card-title>
                     <span class="headline">Login</span>
                 </v-card-title>
@@ -65,7 +72,12 @@
                 </v-card-actions>
             </v-card>
 
-            <v-card :key="2" v-else>
+            <v-card v-else>
+                <v-progress-linear v-show="showLoadingRegistration"
+                                   indeterminate
+                                   color="teal"
+                ></v-progress-linear>
+                <v-card-title>
                 <v-card-title>
                     <span class="headline">Registration</span>
                 </v-card-title>
@@ -89,7 +101,7 @@
                             <v-row>
                                 <v-col sm="12" md="6" lg="6">
                                     <v-text-field :rules="[rules.required]"
-                                                  v-model="userLogin.identificationCard"
+                                                  v-model="userRegistration.identificationCard"
                                                   label="Identification Card">
                                     </v-text-field>
                                 </v-col>
@@ -104,7 +116,7 @@
                             <v-row>
                                 <v-col sm="12" md="6">
                                     <v-text-field v-model="userRegistration.password"
-                                                  :rules="[rules.required, rules.validateWithRepeatPassword]"
+                                                  :rules="[rules.required]"
                                                   :type="'password'"
                                                   label="Password"></v-text-field>
                                 </v-col>
@@ -145,6 +157,8 @@
 <script src="js/libs/axios.js"></script>
 <script src="js/libs/vuetify.js"></script>
 <script src="js/libs/moment-locales.min.js"></script>
+<script src="js/authentication.js"></script>
+<script src="js/libs/sweetalert2.1.js"></script>
 <script src="js/login.js"></script>
 </body>
 </html>

@@ -15,6 +15,14 @@ new Vue({
                 password: "",
                 createdDate: ""
             },
+            userRegistrationDefault: {
+                firstName: "",
+                lastName: "",
+                identificationCard: "",
+                email: "",
+                password: "",
+                createdDate: ""
+            },
             repeatPassword: "",
             displayLogin: true,
             API_PATH: "./api/users/",
@@ -34,29 +42,60 @@ new Vue({
             registerFormIsValid: false,
             displaySuccessAlert: false,
             displayErrorAlert: false,
-            errorMessage: ""
+            errorMessage: "",
+            showLoading: false,
+            showLoadingRegistration: false,
         };
     },
 
+    mounted() {
+        this.userIsLogin();
+    },
+
     methods: {
+        userIsLogin() {
+            if (authenticationService.getCurrentUser(this.userLogin) !== null) {
+                window.location.href = './index.jsp';
+            }
+            return;
+        },
+
         login() {
-            axios
-                .post(this.API_PATH + 'login', {
-                    email: this.userLogin.email,
-                    password: this.userLogin.password
-                })
-                .then(response => {
-                    localStorage.setItem("user", response.data);
-                    window.open('./index.jsp', '_blank');
-                })
-                .catch(error => {
-                    console.error(error);
-                    this.errorMessage = error;
-                    this.diplayErrorAlert = true;
-                });
+            if (this.loginFormIsValid) {
+
+                this.showLoading = true;
+                this.formIsValid = false;
+
+                axios
+                    .post('./api/users/login', {
+                        email: this.userLogin.email,
+                        password: this.userLogin.password
+                    })
+                    .then(response => {
+                        localStorage.setItem(userKey, JSON.stringify(response.data));
+                        window.location.href = './index.jsp';
+                    })
+                    .catch(error => {
+                        console.log({date: error})
+                        if(error.response.status = 404) {
+                            swal('Error', 'User or password are invalid', 'error')
+                        }else {
+                            swal('Error', error.response.data)
+                        }
+
+                        this.showLoading = false;
+                        this.formIsValid = true;
+                    });
+
+            } else {
+                swal("Info", 'Form is not valid', 'error');
+            }
         },
         register() {
             if (this.registerFormIsValid) {
+                this.showLoadingRegistration = true;
+                this.registerFormIsValid = false;
+
                 axios.post(this.API_PATH, {
                     firstName: this.userRegistration.firstName,
                     lastName: this.userRegistration.lastName,
@@ -65,11 +104,26 @@ new Vue({
                     password: this.userRegistration.password,
                     createdDate: moment().format("D-MM-YYYY H:m:s")
                 }).then(data => {
-                    alert(data);
+                    this.showLoadingRegistration = false;
+                    this.registerFormIsValid = true;
+                    this.userRegistration = Object.assign({}, this.userRegistrationDefault);
+                    this.displayLogin = true;
+                    swal('Success', 'registration was successfully.please go to login page', 'success');
                 }).catch(err => {
-                    alert(err);
-                })
+                    if(err.response.status = 404) {
+                        swal('Error', err.response.data, 'error')
+                    }else {
+                        swal('Error', err.response.data)
+                    }
 
+                    this.showLoadingRegistration = false;
+                    this.registerFormIsValid = true;
+
+                })
+            } else {
+                swal('Error', 'Form is not valid', 'error')
+
+                return;
             }
         },
         showRegistrationForm() {
