@@ -77,9 +77,9 @@ new Vue({
                     })
                     .catch(error => {
                         console.log({date: error})
-                        if(error.response.status = 404) {
+                        if (error.response.status = 404) {
                             swal('Error', 'User or password are invalid', 'error')
-                        }else {
+                        } else {
                             swal('Error', error.response.data)
                         }
 
@@ -110,9 +110,9 @@ new Vue({
                     this.displayLogin = true;
                     swal('Success', 'registration was successfully.please go to login page', 'success');
                 }).catch(err => {
-                    if(err.response.status = 404) {
+                    if (err.response.status = 404) {
                         swal('Error', err.response.data, 'error')
-                    }else {
+                    } else {
                         swal('Error', err.response.data)
                     }
 

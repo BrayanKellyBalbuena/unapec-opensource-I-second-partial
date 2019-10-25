@@ -34,8 +34,8 @@
         <div class="login">
             <v-card v-if="displayLogin">
                 <v-progress-linear v-show="showLoading"
-                        indeterminate
-                        color="teal"
+                                   indeterminate
+                                   color="teal"
                 ></v-progress-linear>
                 <v-card-title>
                     <span class="headline">Login</span>

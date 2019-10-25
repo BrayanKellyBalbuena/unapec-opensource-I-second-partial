@@ -5,9 +5,13 @@ import edu.unapec.shoppingorders.repositories.UserRepository;
 import edu.unapec.shoppingorders.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
 
+@Repository
+@Transactional
 public class UserRepositoryDatabaseImpl extends RepositoryDatabaseImpl<User, Long> implements UserRepository {
     public UserRepositoryDatabaseImpl(HibernateUtil hibernateUtil) {
         super(hibernateUtil, User.class);

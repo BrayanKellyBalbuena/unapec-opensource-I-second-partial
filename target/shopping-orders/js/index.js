@@ -7,11 +7,11 @@ new Vue({
         }
     },
 
-   beforeCreate() {
-       if (authenticationService.getCurrentUser() === null) {
-           window.location.href = './login.jsp'
-       }
-   },
+    beforeCreate() {
+        if (authenticationService.getCurrentUser() === null) {
+            window.location.href = './login.jsp'
+        }
+    },
     mounted() {
         this.currentUser = JSON.parse(authenticationService.getCurrentUser());
     },

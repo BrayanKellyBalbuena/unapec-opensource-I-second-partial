@@ -3,6 +3,7 @@
 CREATE DATABASE shopping_orders;
 DROP TABLE orders;
 DROP TABLE products;
+DROP TABLE users;
 
 USE shopping_orders;
 DROP TABLE Users;
@@ -65,7 +66,7 @@ CREATE TABLE locations(
 
 CREATE TABLE orders(
   id BIGINT NOT NULL AUTO_INCREMENT,
-  users_id BIGINT NOT NULL,
+  user_id BIGINT NOT NULL,
   product_id BIGINT NOT NULL,
   location_id BIGINT NOT NULL,
   price DOUBLE(12,2) NOT NULL,
@@ -74,11 +75,11 @@ CREATE TABLE orders(
   order_date DATETIME NOT NULL,
   created_date DATETIME NOT NULL,
   created_by VARCHAR(64),
-  updated_date DATETIME,
-  updated_by VARCHAR(64),
+  modified_date DATETIME,
+  modified_by VARCHAR(64),
   state BIT NOT NULL,
   CONSTRAINT pk_orders_id PRIMARY KEY (id),
-  CONSTRAINT fk_orders_clients_id FOREIGN KEY (users_id) REFERENCES users (id),
+  CONSTRAINT fk_orders_clients_id FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_orders_products_id FOREIGN KEY (product_id) REFERENCES products(id),
   CONSTRAINT fk_orders_locations_id FOREIGN KEY (location_id) REFERENCES locations(id)
 );

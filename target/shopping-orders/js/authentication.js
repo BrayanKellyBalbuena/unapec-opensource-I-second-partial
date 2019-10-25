@@ -5,7 +5,7 @@ let authenticationService =
             localStorage.removeItem(userKey);
             window.location.href = './login.jsp'
         },
-        getCurrentUser: () =>  localStorage.getItem(userKey),
+        getCurrentUser: () => localStorage.getItem(userKey),
 
         register: (user) => {
             axios.post(this.API_PATH, {

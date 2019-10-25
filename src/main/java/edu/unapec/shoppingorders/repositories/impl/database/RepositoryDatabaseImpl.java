@@ -6,6 +6,7 @@ import edu.unapec.shoppingorders.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@org.springframework.stereotype.Repository
+@Transactional
 public class RepositoryDatabaseImpl<T extends BaseModel, ID extends Serializable> implements Repository<T, ID> {
 
     protected Class<T> genericType;

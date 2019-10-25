@@ -2,92 +2,32 @@ package edu.unapec.shoppingorders.models;
 
 import lombok.Data;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Calendar;
 import java.util.Date;
 
 @Data
 @XmlRootElement
-public class ShoppingOrder {
-    private int id;
-    private int clientId;
-    private String clientName;
+@Entity
+@Table(name = "orders")
+public class ShoppingOrder extends BaseModel<Long> {
+
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+    @Column(name = "location_id", nullable = false)
+    private Long locationId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", insertable = false, updatable = false)
+    private Location location;
+    @Column(name = "product_id", nullable = false)
+    private Long productId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Product product;
-    private String orderDate;
-    private double quantity;
+    private double price;
+    @Column(name = "order_date", nullable = false)
+    private Date orderDate;
+    private int quantity;
+    @Column(name = "sub_total")
     private double subTotal;
-
-    public ShoppingOrder() { }
-
-    public ShoppingOrder(int id, int clientId, String clientName,
-                         Product product, String orderDate, double quantity,
-                         double subTotal) {
-        this.id = id;
-        this.clientId = clientId;
-        this.clientName = clientName;
-        this.product = product;
-        this.orderDate = orderDate;
-        this.quantity = quantity;
-        this.subTotal = subTotal;
-    }
-
-    public String getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getClientName() {
-        return this.clientName;
-    }
-
-    public void getClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(double subTotal) {
-        this.subTotal = subTotal;
-    }
 }

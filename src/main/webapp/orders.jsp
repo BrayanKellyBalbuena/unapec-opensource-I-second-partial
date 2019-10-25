@@ -46,27 +46,30 @@
                                 </v-card-title>
 
                                 <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="clients" item-text="name" v-model="selectedClient" item-value="id"
-                                                          label="Select a Client"></v-select>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="products" item-text="name" v-model="selectedProduct" item-value="id"
-                                                          label="Select a product"></v-select>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedOrder.quantity" label="Quantity" type="number"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedOrder.product.price" label="Price" type="number"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field label="Subtotal" v-bind:value="editedOrder.product.price * editedOrder.quantity" readonly></v-text-field>
-                                            </v-col>
-                                        </v-row>
-                                    </v-container>
+                                    <v-form ref="form" v-model="registerFormIsValid" :lazy-validation='true'>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-select :items="products" item-text="name" v-model="selectedProduct" item-value="id"
+                                                              label="Select a product"></v-select>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-select :items="locations" item-text="name"
+                                                              v-model="selectedLocation" item-value="id"
+                                                              label="Select a destination"></v-select>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedOrder.quantity" label="Quantity" type="number"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedOrder.product.price" label="Price" type="number"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field label="Subtotal" v-bind:value="editedOrder.product.price * editedOrder.quantity" readonly></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-form>
                                 </v-card-text>
 
                                 <v-card-actions>

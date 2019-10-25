@@ -44,7 +44,7 @@ public class BaseController<TModel extends BaseModel, TDto extends BaseDto, TSer
 
             return Response.ok(dtos).build();
         } catch (Exception ex) {
-            return null;
+            return Response.serverError().entity(ex).build();
         }
     }
 

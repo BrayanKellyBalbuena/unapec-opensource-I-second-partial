@@ -1,26 +1,11 @@
 package edu.unapec.shoppingorders.configurations;
 
 import edu.unapec.shoppingorders.dtos.*;
-import edu.unapec.shoppingorders.models.Location;
-import edu.unapec.shoppingorders.models.Product;
-import edu.unapec.shoppingorders.models.ProductCategory;
-import edu.unapec.shoppingorders.models.User;
-import edu.unapec.shoppingorders.repositories.LocationRepository;
-import edu.unapec.shoppingorders.repositories.ProductCategoryRepository;
-import edu.unapec.shoppingorders.repositories.ProductRepository;
-import edu.unapec.shoppingorders.repositories.UserRepository;
-import edu.unapec.shoppingorders.repositories.impl.database.LocationRepositoryDatabaseImpl;
-import edu.unapec.shoppingorders.repositories.impl.database.ProductCategoryRepositoryDatabaseImpl;
-import edu.unapec.shoppingorders.repositories.impl.database.ProductRepositoryDatabaseImpl;
-import edu.unapec.shoppingorders.repositories.impl.database.UserRepositoryDatabaseImpl;
-import edu.unapec.shoppingorders.services.LocationService;
-import edu.unapec.shoppingorders.services.ProductCategoryService;
-import edu.unapec.shoppingorders.services.ProductService;
-import edu.unapec.shoppingorders.services.UserService;
-import edu.unapec.shoppingorders.services.impl.LocationServiceImpl;
-import edu.unapec.shoppingorders.services.impl.ProductCategoryServiceImpl;
-import edu.unapec.shoppingorders.services.impl.ProductServiceImpl;
-import edu.unapec.shoppingorders.services.impl.UserServiceImpl;
+import edu.unapec.shoppingorders.models.*;
+import edu.unapec.shoppingorders.repositories.*;
+import edu.unapec.shoppingorders.repositories.impl.database.*;
+import edu.unapec.shoppingorders.services.*;
+import edu.unapec.shoppingorders.services.impl.*;
 import edu.unapec.shoppingorders.utils.HibernateUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -80,6 +65,16 @@ public class SpringDIConfiguration {
     }
 
     @Bean
+    public ShoppingOrderRepository shoppingOrderRepository() {
+        return new ShoppingOrderDatabaseRepositoryImpl(hibernateUtil());
+    }
+
+    @Bean
+    public ShoppingOrderService shoppingOrderService() {
+        return new ShoppingOrderServiceImpl(shoppingOrderRepository());
+    }
+
+    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public ModelMapper modelMapper() {
         ModelMapper mapper = new ModelMapper();
@@ -95,9 +90,15 @@ public class SpringDIConfiguration {
         mapper.createTypeMap(LocationDto.class, Location.class);
         mapper.createTypeMap(ProductDto.class, Product.class);
         mapper.createTypeMap(UserLoginDto.class, User.class);
+        mapper.createTypeMap(OrderDto.class, ShoppingOrder.class);
 
         mapper.typeMap(Product.class, ProductDto.class)
                 .addMapping(src -> src.getProductCategory().getName(), ProductDto::setCategory);
+
+        mapper.typeMap(ShoppingOrder.class, OrderDto.class)
+                .addMapping(src -> src.getProduct().getName(), OrderDto::setProduct)
+                .addMapping(src -> src.getLocation(), OrderDto::setLocation);
+
 
         mapper.createTypeMap(User.class, UserDto.class);
         mapper.createTypeMap(UserDto.class, User.class);

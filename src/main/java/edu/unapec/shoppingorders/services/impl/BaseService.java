@@ -3,12 +3,15 @@ package edu.unapec.shoppingorders.services.impl;
 import edu.unapec.shoppingorders.models.BaseModel;
 import edu.unapec.shoppingorders.repositories.Repository;
 import edu.unapec.shoppingorders.services.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+@org.springframework.stereotype.Service
+@Transactional
 public abstract class BaseService<TModel extends BaseModel, ID extends Serializable> implements Service<TModel, ID> {
     protected Repository<TModel, ID> repository;
 
