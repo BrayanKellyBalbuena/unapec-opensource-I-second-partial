@@ -1,6 +1,8 @@
 package edu.unapec.shoppingorders.models;
 
 import lombok.Data;
+import org.hibernate.annotations.NamedQuery;
+
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,6 +12,7 @@ import java.util.Date;
 @XmlRootElement
 @Entity
 @Table(name = "orders")
+@NamedQuery(name = "getOrderByUserId", query = "from ShoppingOrder where userId = :userId and state = 1")
 public class ShoppingOrder extends BaseModel<Long> {
 
     @Column(name = "user_id", nullable = false)

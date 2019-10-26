@@ -46,16 +46,18 @@ new Vue({
             },
             editedIndex: -1,
             API_ORDERS: "./api/shopping-orders/",
+            API_ORDERS_BY_USER_ID: "./api/shopping-orders/user/",
             API_PRODUCTS: "./api/products/",
             API_LOCATIONS: "./api/locations/",
-            currentUser: {'id': 0, firstName: '', lastName: '',},
+            currentUser: {'id': 0, firstName: '', lastName: ''},
             registerFormIsValid: false
         }
 
     },
 
     beforeCreate() {
-        if (authenticationService.getCurrentUser() === null) {
+        let user = authenticationService.getCurrentUser();
+        if (user === null) {
             window.location.href = './login.jsp'
         }
     },
@@ -80,13 +82,24 @@ new Vue({
     },
 
     methods:{
-        getAllMembers: function(vm){
-            axios.get(this.API_ORDERS)
-                .then(function(response){
-                    vm.orders = response.data;
-                }).catch(err => {
-                swal('Error', 'trying load orders', 'error')
-            });
+
+        getAllMembers: function(vm) {
+            if (this.currentUser.email == "b@b.com") {
+
+                axios.get(this.API_ORDERS)
+                    .then(function (response) {
+                        vm.orders = response.data;
+                    }).catch(err => {
+                    swal('Error', 'trying load orders', 'error')
+                });
+            }else {
+                axios.get(this.API_ORDERS_BY_USER_ID + this.currentUser.id)
+                    .then(function (response) {
+                        vm.orders = response.data;
+                    }).catch(err => {
+                    swal('Error', 'trying load orders', 'error')
+                });
+            }
 
             axios.get(this.API_PRODUCTS).then( (resp) => {
                 vm.products = resp.data;
@@ -94,7 +107,7 @@ new Vue({
                 swal('Error', 'trying load products', 'error')
             });
 
-            axios.get(this.API_LOCATIONS).then( (resp) => {
+            axios.get(this.API_LOCATIONS).then((resp) => {
                 vm.locations = resp.data;
             }).catch((error) => {
                 swal('Error', 'trying load locations', 'error')
@@ -114,18 +127,35 @@ new Vue({
         },
 
         deleteOrder: function(order) {
-            const id = this.orders.find(c => c.id === order.id).id;
-            if(confirm('Are you sure want to delete') ){
-                axios.delete(this.API_ORDERS , {
-                    params: {
-                        id: id
-                    }
-                } ).then( (response) => {
-                    this.getAllMembers(this)
-                }).catch( (error) => {
-                    alert(error)
-                })
-            }
+            console.log(order);
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios
+                        .delete(this.API_ORDERS + order.id)
+                        .then(response => {
+                            this.getAllMembers(this);
+                            swal("Success", {
+                                icon: "success",
+                            });
+                        })
+                        .catch(error => {
+                            if (error.response.status = 404) {
+                                swal('Error', error.toString(), 'error')
+                            } else {
+                                swal('Error',' please contact your system admin' , 'error')
+                            }
+                        });
+
+                } else {
+
+                }
+            });
         },
 
         close () {
@@ -139,8 +169,8 @@ new Vue({
         save () {
             if (this.editedIndex > -1) {
                 let currentProduct = this.products.find( p => p.id === this.selectedProduct);
-                let currentlocation = this.locations.find( l => l.id === this.selectedLocation);
-                axios.put(this.API_ORDERS + this.editedOrder.id,{
+                let currentlocation = this.locations.find(l => l.id === this.selectedLocation);
+                axios.put(this.API_ORDERS + this.editedOrder.id, {
                     id: this.editedOrder.id,
                     userId: this.currentUser.id,
                     location: currentlocation,
@@ -148,41 +178,43 @@ new Vue({
                     price: currentProduct.price,
                     quantity: this.editedOrder.quantity,
                     subTotal: currentProduct.price * this.editedOrder.quantity,
-                    orderDate:  moment().format('D-MM-YYYY H:m:s'),
+                    orderDate: moment().format('D-MM-YYYY H:m:s'),
                     createdDate: this.editedOrder.createdDate,
                     createdBy: this.editedOrder.createdBy,
                     state: true
-                }).then( (response) => {
-                    swal("Success", '', 'success')
+                }).then((response) => {
                     this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    swal('Error', error.statusCode, 'error')
-                    console.error(error)
+                    swal('Error', error.toString(), 'error')
                 });
 
             } else {
                 let currentProduct = this.products.find( p => p.id === this.selectedProduct);
-                let currentlocation = this.locations.find( l => l.id === this.selectedLocation);
+                let currentlocation = this.locations.find(l => l.id === this.selectedLocation);
                 axios.post(this.API_ORDERS,{
-                    userId: this.currentUser.id,
-                    location: currentlocation,
+                        userId: this.currentUser.id,
+                        location: currentlocation,
                     product: currentProduct,
-                    price: currentProduct.price,
+                        price: currentProduct.price,
                     quantity: this.editedOrder.quantity,
                     subTotal: currentProduct.price * this.editedOrder.quantity,
-                    orderDate: moment().format('D-MM-YYYY H:m:s'),
-                    createdDate: moment().format('D-MM-YYYY H:m:s'),
-                    createdBy: this.currentUser.email,
-                    state: true}
+                        orderDate: moment().format('D-MM-YYYY H:m:s'),
+                        createdDate: moment().format('D-MM-YYYY H:m:s'),
+                        createdBy: this.currentUser.email,
+                        state: true
+                    }
                 ).then( (response) => {
-                    swal('Success','','success');
                     this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
+
                 }).catch((error) => {
-                    swal('Error', error.data,'error');
+                    swal('Error', error.data, 'error');
                 })
 
             }
-            this.close()
         },
 
         viewInMap(item) {

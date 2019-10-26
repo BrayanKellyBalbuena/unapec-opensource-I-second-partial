@@ -17,13 +17,10 @@
 <div id="app">
     <v-app>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <a class="navbar-brand" href="./index.jsp">Shopping Orders</a>
-            <ul class="navbar-nav">
+            <a class="navbar-brand" href="index.jsp">Shopping Orders</a>
+            <ul v-if="currentUser.email == 'b@b.com'" class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="clients.jsp">Clients</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="orders.jsp">Orders</a>
+                    <a class="nav-link" href="users.jsp">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="products.jsp">Products</a>
@@ -34,9 +31,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="locations.jsp">Locations</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.jsp">Orders</a>
+                </li>
             </ul>
 
-            <div class="dropdown ml-auto">
+            <ul v-else class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="orders.jsp">Orders</a>
+                </li>
+            </ul>
+
+            <div v-show="currentUser.firstName != ''" class="dropdown ml-auto">
                 <button class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{currentUser.firstName + ' ' + currentUser.lastName}}

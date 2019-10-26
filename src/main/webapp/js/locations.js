@@ -60,8 +60,13 @@ new Vue({
     },
 
     beforeCreate() {
-        if (authenticationService.getCurrentUser() === null) {
+        let user = authenticationService.getCurrentUser();
+
+        if (user === null) {
             window.location.href = './login.jsp'
+        } else if (JSON.parse(user).email != 'b@b.com') {
+
+            window.location.href = './index.jsp'
         }
     },
 
@@ -89,17 +94,35 @@ new Vue({
             this.dialog = true;
         },
 
-        deleteLocation: function (location) {
-            const id = this.locations.find(c => c.id === location.id).id;
-            if (confirm('Are you sure want to delete')) {
-                axios.delete(this.API_PATH + id).then((response) => {
-                    this.getAllMembers(this)
-                    this.diplaySuccessAlert = true;
-                }).catch((error) => {
-                    this.diplayErrorAlert = true;
-                    this.errorMessage = error;
-                })
-            }
+        deleteLocation: function (dto) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios
+                        .delete(this.API_PATH + dto.id)
+                        .then(response => {
+                            this.getAllMembers(this);
+                            swal("Success", {
+                                icon: "success",
+                            });
+                        })
+                        .catch(error => {
+                            if (error.response.status = 404) {
+                                swal('Error', error.toString(), 'error')
+                            } else {
+                                swal('Error', ' please contact your system admin', 'error')
+                            }
+                        });
+
+                } else {
+
+                }
+            });
         },
 
         close() {
@@ -111,7 +134,6 @@ new Vue({
         },
 
         save() {
-
             if (this.editedIndex > -1) {
                 axios.put(this.API_PATH + this.editedLocation.id, {
                         id: this.editedLocation.id,
@@ -123,11 +145,10 @@ new Vue({
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
-                    this.diplaySuccessAlert = true;
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    console.error(error)
-                    this.errorMessage = error
-                    this.diplayErrorAlert = true;
+                    swal('Error', err.toString(), 'error')
                 });
 
             } else {
@@ -136,18 +157,18 @@ new Vue({
                         name: this.editedLocation.name,
                         lastName: this.editedLocation.lastName,
                         description: this.editedLocation.description,
+                    createdBy: this.currentUser.email,
                     createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    this.errorMessage = error;
-                    this.diplayErrorAlert = true;
-                    console.error(error)
+                    swal('Error', err.toString(), 'error')
                 })
 
             }
-            this.close()
         },
     }
 });

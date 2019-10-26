@@ -84,6 +84,45 @@ CREATE TABLE orders(
   CONSTRAINT fk_orders_locations_id FOREIGN KEY (location_id) REFERENCES locations(id)
 );
 
+CREATE TABLE orders_headers
+(
+    id            BIGINT   NOT NULL AUTO_INCREMENT,
+    user_id       BIGINT   NOT NULL,
+    location_id   BIGINT   NOT NULL,
+    total         DOUBLE(12, 2),
+    order_date    DATETIME NOT NULL,
+    created_date  DATETIME NOT NULL,
+    created_by    VARCHAR(64),
+    modified_date DATETIME,
+    modified_by   VARCHAR(64),
+    state         BIT      NOT NULL,
+    CONSTRAINT pk_orders_id PRIMARY KEY (id),
+    CONSTRAINT fk_orders_users_id FOREIGN KEY (user_id) REFERENCES users (id),
+    CONSTRAINT fk_orders_products_id FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT fk_orders_locations_id FOREIGN KEY (location_id) REFERENCES locations (id)
+);
+
+
+CREATE TABLE orders_details
+(
+    id              BIGINT        NOT NULL AUTO_INCREMENT,
+    order_header_id BIGINT        NOT NULL,
+    product_id      BIGINT        NOT NULL,
+    price           DOUBLE(12, 2) NOT NULL,
+    quantity        INT           NOT NULL,
+    sub_total       DOUBLE(12, 2),
+    created_date    DATETIME      NOT NULL,
+    created_by      VARCHAR(64),
+    modified_date   DATETIME,
+    modified_by     VARCHAR(64),
+    state           BIT           NOT NULL,
+    CONSTRAINT pk_orders_id PRIMARY KEY (id),
+    CONSTRAINT fk_orders_products_id FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT fk_orders_orders_headers_id FOREIGN KEY (location_id) REFERENCES orders_headers (order_header_id)
+);
+
+
+
 SELECT * FROM  locations;
 SELECT * FROM  products;
 SELECT * FROM  products_category;

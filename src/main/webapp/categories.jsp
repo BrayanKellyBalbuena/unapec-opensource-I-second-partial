@@ -27,10 +27,7 @@
                 <template v-slot:top>
                     <v-toolbar flat color="white">
                         <v-toolbar-title>Products Categories</v-toolbar-title>
-                        <v-divider
-                                class="mx-4"
-                                inset
-                                vertical
+                        <v-divider class="mx-4" inset vertical
                         ></v-divider>
                         <div class="flex-grow-1"></div>
                         <v-text-field
@@ -41,7 +38,7 @@
                                 hide-details
                                 class="col-md-4"
                         ></v-text-field>
-                        <v-dialog v-model="dialog" max-width="500px">
+                        <v-dialog v-model="dialog" persistent max-width="500px">
                             <template v-slot:activator="{ on }">
                                 <v-btn color="green" dark class="mb-2" v-on="on">New Item</v-btn>
                             </template>

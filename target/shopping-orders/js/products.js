@@ -46,8 +46,13 @@ new Vue({
     },
 
     beforeCreate() {
-        if (authenticationService.getCurrentUser() === null) {
+        let user = authenticationService.getCurrentUser();
+
+        if (user === null) {
             window.location.href = './login.jsp'
+        }else if(JSON.parse(user).email != 'b@b.com') {
+
+            window.location.href = './index.jsp'
         }
     },
 
@@ -91,18 +96,35 @@ new Vue({
             this.dialog = true;
         },
 
-        deleteProduct: function(product) {
-            const id = this.products.find(c => c.id === product.id).id;
-            if(confirm('Are you sure want to delete') ){
-                axios.delete(this.API_URL + product.id, {
-                } ).then( (response) => {
-                    this.diplaySuccessAlert = true;
-                    this.getAllMembers(this);
-                }).catch( (error) => {
-                    this.diplayErrorAlert = true;
-                    this.errorMessage = error;
-                })
-            }
+        deleteProduct: function(dto) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios
+                        .delete(this.API_URL + dto.id)
+                        .then(response => {
+                            this.getAllMembers(this);
+                            swal("Success", {
+                                icon: "success",
+                            });
+                        })
+                        .catch(error => {
+                            if (error.response.status = 404) {
+                                swal('Error', error.toString(), 'error')
+                            } else {
+                                swal('Error',' please contact your system admin' , 'error')
+                            }
+                        });
+
+                } else {
+
+                }
+            });
         },
 
         close () {
@@ -124,31 +146,29 @@ new Vue({
                         state: true
                     },
                 ).then( (response) => {
-                    this.getAllMembers(this);
-                    this.diplaySuccessAlert = true;
+                    this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    this.diplayErrorAlert = true;
-                    this.errorMessage = error;
+                    swal('Error',error.toString(), 'error')
                 });
-
             } else {
                 axios.post(this.API_URL, {
                     name: this.editedProduct.name,
                         categoryId: this.selectedCategory,
                         price: this.editedProduct.price,
                         createdDate: moment().format("D-MM-YYYY H:m:s"),
+                        createdBy: this.currentUser.email,
                         state: true
                     },
                 ).then( (response) => {
                     this.getAllMembers(this)
-                    this.diplaySuccessAlert = true;
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    this.diplayErrorAlert = true;
-                    this.errorMessage = error;
+                    swal('Error',error.toString(), 'error')
                 })
-
             }
-            this.close()
         },
     }
 });

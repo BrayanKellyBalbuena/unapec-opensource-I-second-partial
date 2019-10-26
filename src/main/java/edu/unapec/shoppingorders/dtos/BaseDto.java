@@ -26,6 +26,8 @@ public abstract class BaseDto<ID> {
 
     protected boolean state;
 
+    protected String createBy;
+
     protected BaseDto() {
 
     }

@@ -46,5 +46,6 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(Product.class);
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(ShoppingOrder.class);
+        configuration.addAnnotatedClass(ReportOrderUser.class);
     }
 }

@@ -12,16 +12,6 @@
     <jsp:attribute name="otherScripst"><script src="js/products.js"></script></jsp:attribute>
     <jsp:body>
         <template>
-            <div class="mt-2">
-                <v-alert type="success" v-model="displaySuccessAlert" dense
-                         border="left" dismissible>
-                    Saved Successfully
-                </v-alert>
-                <v-alert type="error" v-model="displayErrorAlert" dense
-                         border="left" dismissible>
-                    {{errorMessage}}
-                </v-alert>
-            </div>
             <v-data-table
                     :headers="headers"
                     :items="products"
@@ -46,7 +36,7 @@
                                 hide-details
                                 class="col-md-4"
                         ></v-text-field>
-                        <v-dialog v-model="dialog" max-width="500px">
+                        <v-dialog v-model="dialog" persistent max-width="500px">
                             <template v-slot:activator="{ on }">
                                 <v-btn color="green" dark class="mb-2" v-on="on">New Item</v-btn>
                             </template>

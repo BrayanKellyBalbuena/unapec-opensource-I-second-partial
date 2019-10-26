@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public abstract class BaseService<TModel extends BaseModel, ID extends Serializa
     }
 
     @Override
-    public ID save(TModel model) throws IOException {
+    public ID save(TModel model) throws IOException, NoSuchAlgorithmException {
         if (model != null) {
             model.setCreatedDate(new Date());
             model.setState(true);
@@ -37,7 +38,7 @@ public abstract class BaseService<TModel extends BaseModel, ID extends Serializa
     }
 
     @Override
-    public void update(TModel entity) throws IOException {
+    public void update(TModel entity) throws IOException, NoSuchAlgorithmException {
         entity.setModifiedDate(new Date());
         repository.update(entity);
     }

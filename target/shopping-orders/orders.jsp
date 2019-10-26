@@ -17,8 +17,7 @@
                     :items="orders"
                     :search="search"
                     sort-by="id"
-                    class="elevation-1 mt-4"
-            >
+                    class="elevation-1 mt-4">
                 <template v-slot:top>
                     <v-toolbar flat color="white">
                         <v-toolbar-title>Orders</v-toolbar-title>
@@ -36,7 +35,7 @@
                                 hide-details
                                 class="col-md-4"
                         ></v-text-field>
-                        <v-dialog v-model="dialog" max-width="500px">
+                        <v-dialog v-model="dialog" persistent max-width="500px">
                             <template v-slot:activator="{ on }">
                                 <v-btn color="green " dark class="mb-2" v-on="on">New Item</v-btn>
                             </template>
@@ -47,27 +46,28 @@
 
                                 <v-card-text>
                                     <v-form ref="form" v-model="registerFormIsValid" :lazy-validation='true'>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="products" item-text="name" v-model="selectedProduct" item-value="id"
-                                                          label="Select a product"></v-select>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-select :items="locations" item-text="name" v-model="selectedLocation" item-value="id"
-                                                          label="Select a destination"></v-select>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedOrder.quantity" label="Quantity" type="number"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field v-model="editedOrder.product.price" label="Price" type="number"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="6">
-                                                <v-text-field label="Subtotal" v-bind:value="editedOrder.product.price * editedOrder.quantity" readonly></v-text-field>
-                                            </v-col>
-                                        </v-row>
-                                    </v-container>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-select :items="products" item-text="name" v-model="selectedProduct" item-value="id"
+                                                              label="Select a product"></v-select>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-select :items="locations" item-text="name"
+                                                              v-model="selectedLocation" item-value="id"
+                                                              label="Select a destination"></v-select>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedOrder.quantity" label="Quantity" type="number"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field v-model="editedOrder.product.price" label="Price" type="number"></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="6">
+                                                    <v-text-field label="Subtotal" v-bind:value="editedOrder.product.price * editedOrder.quantity" readonly></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
                                     </v-form>
                                 </v-card-text>
 

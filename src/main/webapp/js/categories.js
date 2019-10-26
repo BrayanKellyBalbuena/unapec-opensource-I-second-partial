@@ -49,11 +49,15 @@ new Vue({
     },
 
     beforeCreate() {
-        if (authenticationService.getCurrentUser() === null) {
+        let user = authenticationService.getCurrentUser();
+
+        if (user === null) {
             window.location.href = './login.jsp'
+        } else if (JSON.parse(user).email != 'b@b.com') {
+
+            window.location.href = './index.jsp'
         }
     },
-
 
     mounted() {
         this.currentUser = JSON.parse(authenticationService.getCurrentUser());
@@ -79,15 +83,35 @@ new Vue({
             this.dialog = true;
         },
 
-        deleteCategory: function (category) {
-            const id = this.categories.find(c => c.id === category.id).id;
-            if (confirm('Are you sure want to delete')) {
-                axios.delete(this.API_PATH + id).then((response) => {
-                    this.getAllMembers(this)
-                }).catch((error) => {
-                    alert(error)
-                })
-            }
+        deleteCategory: function (dto) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios
+                        .delete(this.API_URL + dto.id)
+                        .then(response => {
+                            this.getAllMembers(this);
+                            swal("Success", {
+                                icon: "success",
+                            });
+                        })
+                        .catch(error => {
+                            if (error.response.status = 404) {
+                                swal('Error', error.toString(), 'error')
+                            } else {
+                                swal('Error', ' please contact your system admin', 'error')
+                            }
+                        });
+
+                } else {
+
+                }
+            });
         },
 
         close() {
@@ -109,8 +133,10 @@ new Vue({
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    console.error(error)
+                    swal("Error", error.toString(), 'error');
                 });
 
             } else {
@@ -119,16 +145,18 @@ new Vue({
                         name: this.editedCategory.name,
                         lastName: this.editedCategory.lastName,
                         description: this.editedCategory.description,
+                    createdBy: this.currentUser.email,
                     createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
+                    swal('Success', '', 'success');
+                    this.close()
                 }).catch((error) => {
-                    console.error(error)
+                    swal("Error", error.toString(), 'error');
                 })
 
             }
-            this.close()
         },
     }
 });

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Order Destination</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -31,12 +31,14 @@
         function initMap() {
 
             let location = JSON.parse(localStorage.getItem("location"));
+            let locationTitle = localStorage.getItem("location_title");
             map = new google.maps.Map(document.getElementById('map'), {
                 center:location,
                 zoom: 8
             });
 
-            var marker = new google.maps.Marker({position: location, map: map});
+            var marker = new google.maps.Marker(
+                {position: location, map: map, title: locationTitle});
         }
     </script>
 </div>

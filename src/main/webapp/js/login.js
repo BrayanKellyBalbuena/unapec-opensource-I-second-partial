@@ -54,7 +54,8 @@ new Vue({
 
     methods: {
         userIsLogin() {
-            if (authenticationService.getCurrentUser(this.userLogin) !== null) {
+            let user = authenticationService.getCurrentUser(this.userLogin)
+            if (user !== null) {
                 window.location.href = './index.jsp';
             }
             return;
@@ -113,7 +114,7 @@ new Vue({
                     if (err.response.status = 404) {
                         swal('Error', err.response.data, 'error')
                     } else {
-                        swal('Error', err.response.data)
+                        swal('Error', err.toString())
                     }
 
                     this.showLoadingRegistration = false;
