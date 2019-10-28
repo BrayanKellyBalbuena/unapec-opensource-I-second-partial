@@ -15,7 +15,7 @@
 
   </jsp:attribute>
   <jsp:body>
-    <template v-if ="currentUser.email == 'b@b.com'">
+    <template v-if="currentUser.email == 'b@b.com'">
       <v-row class="mt-4 ml-10">
         <v-col cols="4">
           <v-card @click="showReportUser"
@@ -54,21 +54,21 @@
         </v-col>
 
       </v-row>
-      <v-dialog v-model="dialog"  max-width="1080px">
+      <v-dialog v-model="dialog" max-width="1080px">
         <v-card>
           <v-card-title>
-                        <span class="headline">Report Top buyer customers</span>
+            <span class="headline">Report Top buyer customers</span>
           </v-card-title>
 
           <v-card-text>
-              <canvas id="popChart" height="300" ref="canvas"></canvas>
+            <canvas id="popChart" height="300" ref="canvas"></canvas>
 
           </v-card-text>
 
           <v-card-actions>
             <div class="flex-grow-1"></div>
-             
-             
+
+
           </v-card-actions>
         </v-card>
       </v-dialog>

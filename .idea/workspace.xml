@@ -10,52 +10,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="Done orders">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/dtos/ReportOrderUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ReportOrderUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/users.js" afterDir="false" />
+    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database script/mysql_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database script/mysql_script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/ShoppingOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/ShoppingOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/dtos/BaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/dtos/BaseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ShoppingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ShoppingOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ShoppingOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ShoppingOrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/ShoppingOrderDatabaseRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/ShoppingOrderDatabaseRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/ShoppingOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/ShoppingOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/BaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/genericpage.tag" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/genericpage.tag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/clients.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/clients.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/locations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/locations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/locations.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/products.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/clients.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/clients.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/locations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/orders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/products.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/locations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/locations.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/map.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/map.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/products.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -501,7 +466,10 @@
       <workItem from="1571967560824" duration="10476000" />
       <workItem from="1572013673214" duration="9880000" />
       <workItem from="1572045027821" duration="968000" />
-      <workItem from="1572047371479" duration="35491000" />
+      <workItem from="1572047371479" duration="35679000" />
+      <workItem from="1572093586901" duration="2551000" />
+      <workItem from="1572211446150" duration="625000" />
+      <workItem from="1572234705524" duration="172000" />
     </task>
     <task id="LOCAL-00001" summary="Done controllers Product, Categories and orders">
       <created>1571760526514</created>
@@ -545,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571978032971</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Done report">
+      <created>1572087379748</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572087379748</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,8 +548,8 @@
     <MESSAGE value="Done login and registration" />
     <MESSAGE value="Done login registration, implement templating, improve ui" />
     <MESSAGE value="Done orders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done orders" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Done report" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -588,13 +563,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/js/index.js</url>
           <line>45</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/js/orders.js</url>
           <line>77</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

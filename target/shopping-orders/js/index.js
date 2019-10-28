@@ -4,7 +4,7 @@ new Vue({
     data() {
         return {
             currentUser: {firstName: '', lastName: ''}
-            ,dialog: false,
+            , dialog: false,
             API_ORDERS: './api/shopping-orders/report-orders-user'
         }
     },
@@ -28,15 +28,15 @@ new Vue({
         logout() {
             authenticationService.logout();
         },
-         getRandomColor() {
+        getRandomColor() {
             var letters = '0123456789ABCDEF';
             var color = '#';
-            for (var i = 0; i < 6; i++ ) {
+            for (var i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
-                 return color;
-            }
-    ,
+            return color;
+        }
+        ,
         showReportUser() {
             this.dialog = true;
             axios.get(this.API_ORDERS)
@@ -57,7 +57,7 @@ new Vue({
                         },
                     });
                 })
-                .catch( (err) => {
+                .catch((err) => {
 
                 })
         }

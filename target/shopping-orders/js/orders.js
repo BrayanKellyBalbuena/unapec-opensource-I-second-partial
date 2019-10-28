@@ -83,7 +83,7 @@ new Vue({
 
     methods:{
 
-        getAllMembers: function(vm) {
+        getAllMembers: function (vm) {
             if (this.currentUser.email == "b@b.com") {
 
                 axios.get(this.API_ORDERS)
@@ -92,7 +92,7 @@ new Vue({
                     }).catch(err => {
                     swal('Error', 'trying load orders', 'error')
                 });
-            }else {
+            } else {
                 axios.get(this.API_ORDERS_BY_USER_ID + this.currentUser.id)
                     .then(function (response) {
                         vm.orders = response.data;
@@ -148,7 +148,7 @@ new Vue({
                             if (error.response.status = 404) {
                                 swal('Error', error.toString(), 'error')
                             } else {
-                                swal('Error',' please contact your system admin' , 'error')
+                                swal('Error', ' please contact your system admin', 'error')
                             }
                         });
 

@@ -64,7 +64,7 @@ new Vue({
 
         if (user === null) {
             window.location.href = './login.jsp'
-        }else if(JSON.parse(user).email != 'b@b.com') {
+        } else if (JSON.parse(user).email != 'b@b.com') {
 
             window.location.href = './index.jsp'
         }
@@ -115,7 +115,7 @@ new Vue({
                             if (error.response.status = 404) {
                                 swal('Error', error.toString(), 'error')
                             } else {
-                                swal('Error',' please contact your system admin' , 'error')
+                                swal('Error', ' please contact your system admin', 'error')
                             }
                         });
 
@@ -157,8 +157,8 @@ new Vue({
                         name: this.editedLocation.name,
                         lastName: this.editedLocation.lastName,
                         description: this.editedLocation.description,
-                        createdBy: this.currentUser.email,
-                        createdDate: moment().format("D-MM-YYYY H:m:s")
+                    createdBy: this.currentUser.email,
+                    createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)

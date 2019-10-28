@@ -53,7 +53,7 @@ new Vue({
 
         if (user === null) {
             window.location.href = './login.jsp'
-        }else if(JSON.parse(user).email != 'b@b.com') {
+        } else if (JSON.parse(user).email != 'b@b.com') {
 
             window.location.href = './index.jsp'
         }
@@ -104,7 +104,7 @@ new Vue({
                             if (error.response.status = 404) {
                                 swal('Error', error.toString(), 'error')
                             } else {
-                                swal('Error',' please contact your system admin' , 'error')
+                                swal('Error', ' please contact your system admin', 'error')
                             }
                         });
 
@@ -136,7 +136,7 @@ new Vue({
                     swal('Success', '', 'success');
                     this.close()
                 }).catch((error) => {
-                    swal("Error",error.toString(),'error');
+                    swal("Error", error.toString(), 'error');
                 });
 
             } else {
@@ -145,15 +145,15 @@ new Vue({
                         name: this.editedCategory.name,
                         lastName: this.editedCategory.lastName,
                         description: this.editedCategory.description,
-                        createdBy: this.currentUser.email,
-                        createdDate: moment().format("D-MM-YYYY H:m:s")
+                    createdBy: this.currentUser.email,
+                    createdDate: moment().format("D-MM-YYYY H:m:s")
                     }
                 ).then((response) => {
                     this.getAllMembers(this)
                     swal('Success', '', 'success');
                     this.close()
                 }).catch((error) => {
-                    swal("Error",error.toString(),'error');
+                    swal("Error", error.toString(), 'error');
                 })
 
             }

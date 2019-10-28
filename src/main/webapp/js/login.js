@@ -103,7 +103,8 @@ new Vue({
                     identificationCard: this.userRegistration.identificationCard,
                     email: this.userRegistration.email,
                     password: this.userRegistration.password,
-                    createdDate: moment().format("D-MM-YYYY H:m:s")
+                    createdDate: moment().format("D-MM-YYYY H:m:s"),
+                    status: true
                 }).then(data => {
                     this.showLoadingRegistration = false;
                     this.registerFormIsValid = true;

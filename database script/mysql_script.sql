@@ -121,13 +121,25 @@ CREATE TABLE orders_details
     CONSTRAINT fk_orders_orders_headers_id FOREIGN KEY (location_id) REFERENCES orders_headers (order_header_id)
 );
 
+DELIMITER //
+create procedure GetReportOrders()
+
+begin
+    select u.id,
+           concat(u.first_name, u.last_name) fullName,
+           sum(o.sub_total)                  totalOrder
+    from orders o
+             inner join users u on o.user_id = u.id
+    group by u.id, first_name, last_name;
+
+end //
+DELIMITER ;
 
 
-SELECT * FROM  locations;
-SELECT * FROM  products;
-SELECT * FROM  products_category;
-select * from users;
+create table ReportOrders
+(
+    id         bigint,
+    fullName   varchar(64),
+    totalOrder double(12, 2)
+);
 
-update locations
-set state = 1
-where id in (1,2);

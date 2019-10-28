@@ -50,7 +50,7 @@ new Vue({
 
         if (user === null) {
             window.location.href = './login.jsp'
-        }else if(JSON.parse(user).email != 'b@b.com') {
+        } else if (JSON.parse(user).email != 'b@b.com') {
 
             window.location.href = './index.jsp'
         }
@@ -96,7 +96,7 @@ new Vue({
             this.dialog = true;
         },
 
-        deleteProduct: function(dto) {
+        deleteProduct: function (dto) {
             swal({
                 title: "Are you sure?",
                 text: "Once deleted",
@@ -117,7 +117,7 @@ new Vue({
                             if (error.response.status = 404) {
                                 swal('Error', error.toString(), 'error')
                             } else {
-                                swal('Error',' please contact your system admin' , 'error')
+                                swal('Error', ' please contact your system admin', 'error')
                             }
                         });
 
@@ -150,7 +150,7 @@ new Vue({
                     swal('Success', '', 'success');
                     this.close()
                 }).catch((error) => {
-                    swal('Error',error.toString(), 'error')
+                    swal('Error', error.toString(), 'error')
                 });
             } else {
                 axios.post(this.API_URL, {
@@ -158,7 +158,7 @@ new Vue({
                         categoryId: this.selectedCategory,
                         price: this.editedProduct.price,
                         createdDate: moment().format("D-MM-YYYY H:m:s"),
-                        createdBy: this.currentUser.email,
+                    createdBy: this.currentUser.email,
                         state: true
                     },
                 ).then( (response) => {
@@ -166,7 +166,7 @@ new Vue({
                     swal('Success', '', 'success');
                     this.close()
                 }).catch((error) => {
-                    swal('Error',error.toString(), 'error')
+                    swal('Error', error.toString(), 'error')
                 })
             }
         },
