@@ -9,7 +9,11 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericpage>
     <jsp:attribute name="head"><Title>Locations</Title></jsp:attribute>
-    <jsp:attribute name="otherScripst"><script src="js/locations.js"></script></jsp:attribute>
+    <jsp:attribute name="otherScripst">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6SkZKgQ1wA6NQvJmY-qjqFEr8KZMn8Xk&callback">
+        </script>
+        <script src="js/locations.js"></script>
+    </jsp:attribute>
     <jsp:body>
         <template>
             <div class="mt-2">
@@ -51,34 +55,51 @@
                                 hide-details
                                 class="col-md-4"
                         ></v-text-field>
-                        <v-dialog v-model="dialog" persistent max-width="500px">
+                        <v-dialog v-model="dialog" persistent max-width="600px">
                             <template v-slot:activator="{ on }">
                                 <v-btn color="green" dark class="mb-2" v-on="on">New Item</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>
-                                    <span class="headline">{{ formTitle }}</span>
+                                    <span class="headline blue--text">{{ formTitle }}</span>
                                 </v-card-title>
 
                                 <v-card-text>
                                     <v-form ref="form" v-model="formIsValid" :lazy-validation='true'>
                                         <v-container>
                                             <v-row>
-                                                <v-col cols="12" sm="6" md="6" hidden>
+                                                <v-col cols="4" sm="4" md="4" hidden>
                                                     <v-text-field v-model="editedLocation.id"
                                                                   label="Location Id"></v-text-field>
                                                 </v-col>
-                                                <v-col cols="12" sm="6" md="6">
+                                                <v-col cols="8" sm="8" md="8">
                                                     <v-text-field :rules="[rules.required]"
                                                                   v-model="editedLocation.name"
-                                                                  label="Name"></v-text-field>
+                                                                  label="Name">
+                                                    </v-text-field>
                                                 </v-col>
-                                                <v-col cols="12" sm="6" md="6">
+                                                <v-col cols="1">
+                                                    <v-progress-circular
+                                                            v-if="showGeocodeLoader"
+                                                            :size="20"
+                                                            indeterminate
+                                                            color="green"
+                                                    ></v-progress-circular>
+                                                </v-col>
+                                                <v-col cols="3" sm="3" md="3">
+                                                    <v-btn color="blue" text
+                                                           @click="getGeocodeLocations(editedLocation.name)">Get
+                                                        Geocode
+                                                    </v-btn>
+                                                </v-col>
+                                            </v-row>
+                                            <v-row>
+                                                <v-col sm="6" md="6">
                                                     <v-text-field v-model="editedLocation.latitude"
                                                                   :rules="[rules.required, rules.onlyNumbers]"
                                                                   label="Latitude"></v-text-field>
                                                 </v-col>
-                                                <v-col cols="12" sm="6" md="6">
+                                                <v-col sm="6" md="6">
                                                     <v-text-field v-model="editedLocation.longitude"
                                                                   :rules="[rules.required, rules.onlyNumbers]"
                                                                   label="Longitude"
@@ -115,6 +136,11 @@
                             @click="deleteLocation(item)"
                     >
                         delete
+                    </v-icon>
+                    <v-icon
+                            small
+                            @click="viewInMap(item)">
+                        mdi-map-marker
                     </v-icon>
                 </template>
 

@@ -5,7 +5,9 @@ new Vue({
         return {
             currentUser: {firstName: '', lastName: ''}
             , dialog: false,
-            API_ORDERS: './api/shopping-orders/report-orders-user'
+            API_REPORT_ORDER_USER: './api/shopping-orders/report-orders-user',
+            API_REPORT_ORDER_BY_DATE: './api/shopping-orders/report-orders-date',
+            dialogReportDate: false
         }
     },
 
@@ -28,38 +30,77 @@ new Vue({
         logout() {
             authenticationService.logout();
         },
-        getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
+        getRandomColor(quantities) {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            let colors = [];
+
+            for (let i = 0; i < quantities ; i++) {
+
+                colors.push('#'+(Math.random()*0xFFFFFF<<0).toString(16));
             }
-            return color;
+            console.log(colors);
+
+            return colors;
         }
         ,
         showReportUser() {
             this.dialog = true;
-            axios.get(this.API_ORDERS)
+            this.dialogReportDate = false;
+            axios.get(this.API_REPORT_ORDER_USER)
                 .then((resp) => {
-                    console.log(resp.data.map(e => e.fullName))
                     let ctx = document.getElementById('popChart').getContext('2d');
-                    console.log(resp.data.map(e => e));
+                    let fullNames = resp.data.map(e => e.fullName);
                     let barChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: resp.data.map(e => e.fullName),
+                            labels: fullNames,
                             datasets: [{
                                 label: 'Total Amount',
-                                backgroundColor: this.getRandomColor(),
-                                borderColor: this.getRandomColor(),
+                                backgroundColor: this.getRandomColor(fullNames.length),
                                 data: resp.data.map(e => e.totalOrder)
                             }]
                         },
                     });
                 })
                 .catch((err) => {
+                    swal('Error', 'loading report data', 'error')
+                })
+        },
 
+        showReportQuantityOrderByDate() {
+            this.dialog = false;
+            this.dialogReportDate = true;
+            axios.get(this.API_REPORT_ORDER_BY_DATE)
+                .then((resp) => {
+                    console.log(resp.data.map(e => e));
+                    let ctx = document.getElementById('popChartDate').getContext('2d');
+                    let  orderDates = resp.data.map(e => e.orderDate)
+                    let barChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: orderDates,
+                            datasets: [{
+                                label: 'Quantity Orders',
+                                backgroundColor: this.getRandomColor(orderDates.length),
+                                data: resp.data.map(e => e.quantity)
+                            }],
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        },
+                    });
+                })
+                .catch((err) => {
+                    swal('Error', 'loading report data', 'error')
                 })
         }
+
     }
 });

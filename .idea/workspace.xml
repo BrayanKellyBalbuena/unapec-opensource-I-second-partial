@@ -10,17 +10,42 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="">
+    <list default="true" id="f2d05a05-a407-4db4-bd9d-b26080db7702" name="Default Changelist" comment="Complete map">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/enums/ModelState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/models/ReportOrderDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database script/mysql_script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database script/mysql_script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/ShoppingOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/ShoppingOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ShoppingOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/ShoppingOrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/ShoppingOrderDatabaseRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/ShoppingOrderDatabaseRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/UserRepositoryDatabaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/repositories/impl/database/UserRepositoryDatabaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/ShoppingOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/ShoppingOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/ShoppingOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/ShoppingOrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/locations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/locations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/locations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/products.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/categories.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/categories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/locations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/shopping-orders/js/products.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/js/products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/locations.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/locations.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/shopping-orders/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/shopping-orders/products.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,13 +70,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="cdi.beans_1_1" />
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -87,7 +112,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -470,6 +495,9 @@
       <workItem from="1572093586901" duration="2551000" />
       <workItem from="1572211446150" duration="625000" />
       <workItem from="1572234705524" duration="172000" />
+      <workItem from="1572287562171" duration="152000" />
+      <workItem from="1572287738083" duration="9477000" />
+      <workItem from="1572525047473" duration="16678000" />
     </task>
     <task id="LOCAL-00001" summary="Done controllers Product, Categories and orders">
       <created>1571760526514</created>
@@ -555,27 +583,22 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/webapp/js/login.js</url>
-          <line>57</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/webapp/js/index.js</url>
-          <line>45</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/main/webapp/js/orders.js</url>
-          <line>77</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/utils/HibernateUtil.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="27" />
+          <line>37</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/unapec/shoppingorders/services/impl/UserServiceImpl.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JBossConfiguration">
+        <watch expression="user.password" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

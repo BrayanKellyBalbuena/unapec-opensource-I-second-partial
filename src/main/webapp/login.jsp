@@ -19,7 +19,7 @@
 </head>
 <style>
     .login {
-        margin: 10% 30%;
+        margin: 8% 30%;
     }
 </style>
 </head>
@@ -38,7 +38,7 @@
                                    color="teal"
                 ></v-progress-linear>
                 <v-card-title>
-                    <span class="headline">Login</span>
+                    <span class="headline blue--text">Login</span>
                 </v-card-title>
                 <v-card-text>
                     <v-form ref="form" v-model="loginFormIsValid" :lazy-validation='true'>
@@ -100,7 +100,7 @@
 
                             <v-row>
                                 <v-col sm="12" md="6" lg="6">
-                                    <v-text-field :rules="[rules.required]"
+                                    <v-text-field :rules="[rules.required, rules.validateIdentificationCard]"
                                                   v-model="userRegistration.identificationCard"
                                                   label="Identification Card">
                                     </v-text-field>

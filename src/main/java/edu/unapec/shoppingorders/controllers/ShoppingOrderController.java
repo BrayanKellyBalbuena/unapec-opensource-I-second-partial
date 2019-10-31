@@ -30,6 +30,17 @@ public class ShoppingOrderController extends BaseController<ShoppingOrder, Order
         }
     }
 
+    @Path("report-orders-date")
+    @GET()
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response reportOrderByDate() {
+        try {
+            return Response.ok(service.reportOrdersByDate()).build();
+        } catch (Exception ex) {
+            return Response.serverError().entity(ex).build();
+        }
+    }
+
     @Path("/user/{id}")
     @GET()
     @Produces(MediaType.APPLICATION_JSON)

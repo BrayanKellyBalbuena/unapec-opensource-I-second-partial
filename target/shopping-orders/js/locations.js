@@ -17,6 +17,7 @@ new Vue({
                 {text: 'Actions', value: 'action', sortable: false}
             ],
             locations: [],
+            geocodelocations:[],
             editedLocation: {
                 id: 0,
                 name: '',
@@ -42,6 +43,7 @@ new Vue({
             formIsValid: false,
             displaySuccessAlert: false,
             displayErrorAlert: false,
+            showGeocodeLoader: false,
             errorMessage: '',
             currentUser: {firstName: '', lastName: ''},
         }
@@ -84,6 +86,22 @@ new Vue({
                 });
         },
 
+        getGeocodeLocations: function(address)  {
+            this.showGeocodeLoader = true;
+            let geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({address:address}, (resp, status) => {
+                if(status == 'OK') {
+                    let firstAdress =  resp[0];
+                    console.log({address: firstAdress});
+                    this.editedLocation.name =  firstAdress.formatted_address;
+                    this.editedLocation.latitude = firstAdress.geometry.location.lat();
+                    this.editedLocation.longitude = firstAdress.geometry.location.lng();
+                    this.showGeocodeLoader = false;
+                }
+            })
+        },
+
         logout() {
             authenticationService.logout();
         },
@@ -123,6 +141,13 @@ new Vue({
 
                 }
             });
+        },
+        viewInMap(item) {
+            let encodeUrl = encodeURI(item.name)
+            let mapUrl="https://nominatim.openstreetmap.org/search.php?q={encodeUrl}&polygon_geojson=1`)"
+                .replace("{encodeUrl}", encodeUrl);
+
+            window.open(mapUrl)
         },
 
         close() {

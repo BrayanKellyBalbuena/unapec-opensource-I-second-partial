@@ -26,7 +26,7 @@ new Vue({
             orders: [],
             locations: [],
             selectedClient: {},
-            selectedProduct: {},
+            selectedProduct: {id: 0, name: '', price: 0},
             selectedLocation: {},
             editedOrder: {
                 id: 0,
@@ -168,16 +168,15 @@ new Vue({
 
         save () {
             if (this.editedIndex > -1) {
-                let currentProduct = this.products.find( p => p.id === this.selectedProduct);
                 let currentlocation = this.locations.find(l => l.id === this.selectedLocation);
                 axios.put(this.API_ORDERS + this.editedOrder.id, {
                     id: this.editedOrder.id,
                     userId: this.currentUser.id,
                     location: currentlocation,
-                    product: currentProduct,
-                    price: currentProduct.price,
+                    product: this.selectedProduct,
+                    price: this.selectedProduct.price,
                     quantity: this.editedOrder.quantity,
-                    subTotal: currentProduct.price * this.editedOrder.quantity,
+                    subTotal: this.selectedProduct.price * this.editedOrder.quantity,
                     orderDate: moment().format('D-MM-YYYY H:m:s'),
                     createdDate: this.editedOrder.createdDate,
                     createdBy: this.editedOrder.createdBy,
@@ -191,15 +190,14 @@ new Vue({
                 });
 
             } else {
-                let currentProduct = this.products.find( p => p.id === this.selectedProduct);
                 let currentlocation = this.locations.find(l => l.id === this.selectedLocation);
                 axios.post(this.API_ORDERS,{
                         userId: this.currentUser.id,
                         location: currentlocation,
-                    product: currentProduct,
-                        price: currentProduct.price,
+                    product: this.selectedProduct,
+                        price: this.selectedProduct.price,
                     quantity: this.editedOrder.quantity,
-                    subTotal: currentProduct.price * this.editedOrder.quantity,
+                    subTotal: this.selectedProduct.price * this.editedOrder.quantity,
                         orderDate: moment().format('D-MM-YYYY H:m:s'),
                         createdDate: moment().format('D-MM-YYYY H:m:s'),
                         createdBy: this.currentUser.email,
@@ -218,10 +216,8 @@ new Vue({
         },
 
         viewInMap(item) {
-            window.open("map.jsp")
-            let location = {lat: item.location.latitude, lng: item.location.longitude}
-            localStorage.setItem("location", JSON.stringify(location))
-            localStorage.setItem("location_title", item.location.name)
+            let encodeUrl = encodeURI(item.name)
+            window.open(`https://nominatim.openstreetmap.org/search.php?q={encodeUrl}&polygon_geojson=1`)
         }
     }
 });

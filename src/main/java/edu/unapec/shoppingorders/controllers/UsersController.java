@@ -28,13 +28,14 @@ public class UsersController extends BaseController<User, UserDto, UserService> 
     public Response post(UserDto dto) {
         User user = modelMapper.map(dto, User.class);
         try {
-            user.setPassword(HashUtil.stringToSha256(dto.getPassword()));
             Long id = service.save(user);
-
-            return Response.created(new URI("/api/users" + id)).build();
+            return Response.created(new URI("/api/users/" + id)).build();
         } catch (NoSuchAlgorithmException | IOException | URISyntaxException e) {
             return Response.serverError().entity(e).build();
+        } catch (Exception ex) {
+            return Response.serverError().entity(ex).build();
         }
+
     }
 
     @Path("/login")

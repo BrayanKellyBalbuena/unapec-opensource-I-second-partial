@@ -36,14 +36,14 @@
         </v-col>
 
         <v-col cols="4">
-          <v-card
+          <v-card @click="showReportQuantityOrderByDate"
                   max-width="400"
                   class="mx-auto"
           >
             <v-img
                     class="white--text align-end"
                     height="200px"
-                    src="https://www.clipartmax.com/png/middle/180-1804535_customized-delivery-boy.png"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc74Cpjktc_IZFZZ7n_nkWQYjZm1f8qa5r4gEnLpS553xPtu_iTw&s"
             >
             </v-img>
             <v-card-title>
@@ -54,7 +54,7 @@
         </v-col>
 
       </v-row>
-      <v-dialog v-model="dialog" max-width="1080px">
+      <v-dialog v-model="dialog" max-width="1024px">
         <v-card>
           <v-card-title>
             <span class="headline">Report Top buyer customers</span>
@@ -62,6 +62,24 @@
 
           <v-card-text>
             <canvas id="popChart" height="300" ref="canvas"></canvas>
+
+          </v-card-text>
+
+          <v-card-actions>
+            <div class="flex-grow-1"></div>
+
+
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="dialogReportDate" max-width="1024px">
+        <v-card>
+          <v-card-title>
+            <span class="headline">Report Top buyer customers</span>
+          </v-card-title>
+
+          <v-card-text>
+            <canvas id="popChartDate" height="300" ref="canvas"></canvas>
 
           </v-card-text>
 

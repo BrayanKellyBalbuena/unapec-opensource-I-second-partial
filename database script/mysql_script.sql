@@ -1,12 +1,6 @@
-
-
 CREATE DATABASE shopping_orders;
-DROP TABLE orders;
-DROP TABLE products;
-DROP TABLE users;
 
 USE shopping_orders;
-DROP TABLE Users;
 
 CREATE TABLE users(
   id BIGINT NOT NULL AUTO_INCREMENT,
@@ -98,8 +92,7 @@ CREATE TABLE orders_headers
     state         BIT      NOT NULL,
     CONSTRAINT pk_orders_id PRIMARY KEY (id),
     CONSTRAINT fk_orders_users_id FOREIGN KEY (user_id) REFERENCES users (id),
-    CONSTRAINT fk_orders_products_id FOREIGN KEY (product_id) REFERENCES products (id),
-    CONSTRAINT fk_orders_locations_id FOREIGN KEY (location_id) REFERENCES locations (id)
+    CONSTRAINT fk_orders_header_locations_id FOREIGN KEY (location_id) REFERENCES locations (id)
 );
 
 
@@ -116,9 +109,9 @@ CREATE TABLE orders_details
     modified_date   DATETIME,
     modified_by     VARCHAR(64),
     state           BIT           NOT NULL,
-    CONSTRAINT pk_orders_id PRIMARY KEY (id),
-    CONSTRAINT fk_orders_products_id FOREIGN KEY (product_id) REFERENCES products (id),
-    CONSTRAINT fk_orders_orders_headers_id FOREIGN KEY (location_id) REFERENCES orders_headers (order_header_id)
+    CONSTRAINT pk_orders_details_id PRIMARY KEY (id),
+    CONSTRAINT fk_orders_details_products_id FOREIGN KEY (product_id) REFERENCES products (id),
+    CONSTRAINT fk_orders_details_orders_headers_id FOREIGN KEY (order_header_id) REFERENCES orders_headers (id)
 );
 
 DELIMITER //
@@ -135,6 +128,32 @@ begin
 end //
 DELIMITER ;
 
+DELIMITER //
+create procedure GetReportQuantityOrdersByDate()
+
+begin
+    select u.id,
+           to_date(o.order_date) orderDate,
+           count(o.id)           quantity
+    from orders o
+             inner join users u on o.user_id = u.id
+    group by u.id, first_name, last_name;
+
+end //
+DELIMITER ;
+
+DELIMITER //
+create procedure GetReportQuantityOrdersByDate()
+
+begin
+    select Date(o.order_date) orderDate,
+           count(*)           quantity
+    from orders o
+             inner join users u on o.user_id = u.id
+    group by Date(o.order_date);
+
+end //
+DELIMITER ;
 
 create table ReportOrders
 (
@@ -142,4 +161,7 @@ create table ReportOrders
     fullName   varchar(64),
     totalOrder double(12, 2)
 );
+
+
+
 

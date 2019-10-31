@@ -36,7 +36,10 @@ new Vue({
                     value === this.userRegistration.password ||
                     "Passwords must be the same",
                 validateWithRepeatPassword: value =>
-                    value === this.repeatPassword || "Passwords must be the same"
+                    value === this.repeatPassword || "Passwords must be the same",
+                validateIdentificationCard: value => /^[0-9]{11}$/.test(
+                    value
+                ) || "Invalid IdentificationCard"
             },
             loginFormIsValid: false,
             registerFormIsValid: false,
@@ -104,7 +107,7 @@ new Vue({
                     email: this.userRegistration.email,
                     password: this.userRegistration.password,
                     createdDate: moment().format("D-MM-YYYY H:m:s"),
-                    status: true
+                    state: true
                 }).then(data => {
                     this.showLoadingRegistration = false;
                     this.registerFormIsValid = true;

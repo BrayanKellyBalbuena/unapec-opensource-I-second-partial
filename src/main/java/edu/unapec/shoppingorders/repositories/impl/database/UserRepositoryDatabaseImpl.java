@@ -1,5 +1,6 @@
 package edu.unapec.shoppingorders.repositories.impl.database;
 
+import edu.unapec.shoppingorders.enums.ModelState;
 import edu.unapec.shoppingorders.models.User;
 import edu.unapec.shoppingorders.repositories.UserRepository;
 import edu.unapec.shoppingorders.utils.HibernateUtil;
@@ -25,12 +26,14 @@ public class UserRepositoryDatabaseImpl extends RepositoryDatabaseImpl<User, Lon
         Root<User> root = query.from(User.class);
         Path<String> email = root.get("email");
         Path<String> password = root.get("password");
+        Path<Boolean> state = root.get("state");
 
         Predicate emailPredicate = criteriaBuilder.equal(email, user.getEmail());
         Predicate passwordPredicate = criteriaBuilder.equal(password, user.getPassword());
-        Predicate emailAndPasswordPredicate = criteriaBuilder.and(emailPredicate, passwordPredicate);
+        Predicate statusPredicate = criteriaBuilder.equal(state, ModelState.ACTIVE.getIntValue());
+        Predicate predicate = criteriaBuilder.and(emailPredicate, passwordPredicate, statusPredicate);
 
-        query.select(root).where(emailAndPasswordPredicate);
+        query.select(root).where(predicate);
 
         Query<User> q = session.createQuery(query);
         User result = q.uniqueResult();
