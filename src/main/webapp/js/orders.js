@@ -84,7 +84,7 @@ new Vue({
     methods:{
 
         getAllMembers: function (vm) {
-            if (this.currentUser.email == "b@b.com") {
+            if (this.currentUser.email == "admin@admin.com") {
 
                 axios.get(this.API_ORDERS)
                     .then(function (response) {

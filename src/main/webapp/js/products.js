@@ -50,7 +50,7 @@ new Vue({
 
         if (user === null) {
             window.location.href = './login.jsp'
-        } else if (JSON.parse(user).email != 'b@b.com') {
+        } else if (JSON.parse(user).email != 'admin@admin.com') {
 
             window.location.href = './index.jsp'
         }

@@ -15,7 +15,7 @@
 
   </jsp:attribute>
   <jsp:body>
-    <template v-if="currentUser.email == 'b@b.com'">
+    <template v-if="currentUser.email == 'admin@admin.com'">
       <v-row class="mt-4 ml-10">
         <v-col cols="4">
           <v-card @click="showReportUser"
